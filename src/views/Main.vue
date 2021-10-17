@@ -6,8 +6,6 @@
   </header>
   <main>
     <section class="presentation">
-      <!-- <h2>Presentation</h2> -->
-
       <article>
         <h2>Introduction</h2>
         <p>
@@ -27,7 +25,7 @@
       </aside>
     </section>
     <section class="skills">
-      My Powers
+      <h2>My Powers 💪</h2>
       <ul>
         <li>Vue</li>
         <li>TypeScript</li>
@@ -36,8 +34,22 @@
     </section>
     <section class="currently">
       <h2>I am currently...</h2>
-      <article class="currently-learning">learning</article>
-      <article class="currently-workingon">working on</article>
+      <article class="currently-learning">
+        <h3>Learning 🧐</h3>
+        <ul>
+          <li>Azure Functions</li>
+          <li>React</li>
+          <li>Clean Code</li>
+        </ul>
+      </article>
+      <article class="currently-workingon">
+        <h3>Working on 🛠️</h3>
+        <ul>
+          <li>A KanBan app</li>
+          <li>My own website</li>
+          <li>An Investment app</li>
+        </ul>
+      </article>
     </section>
   </main>
   <footer>contact info, made with, made by, hosted at</footer>
@@ -59,8 +71,15 @@ export default defineComponent({
 }
 
 h1,
-h2 {
+h2,
+h3 {
   all: unset;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding-left: 0;
 }
 
 header {
@@ -82,6 +101,33 @@ main {
   }
   .presentation {
     flex-grow: 8;
+    justify-content: space-evenly;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+
+    article {
+      flex-basis: 500px;
+      order: 2;
+    }
+    aside {
+      flex-basis: 200px;
+    }
+  }
+
+  .currently {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    h2 {
+      width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 700px) {
+    .presentation article {
+      order: 0;
+    }
   }
 }
 </style>
