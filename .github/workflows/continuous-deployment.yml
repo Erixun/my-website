@@ -31,11 +31,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: yarn install
       - run: yarn build --if-present
-
-      - name: deploy files
       - run: yarn deploy
         # uses: JamesIves/github-pages-deploy-action@3.6.1
-        #with:
+        # with:
          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           #BRANCH: gh-pages # The branch the action should deploy to.
           #FOLDER: dist # The folder the action should deploy.
