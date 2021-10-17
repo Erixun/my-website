@@ -9,6 +9,10 @@ yarn run build
 # navigate into the build output directory
 cd dist
 
+# provide identity
+git config user.email "erik.sund.berg20@hotmail.se"
+git config user.name "Erik Sundberg"
+
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME
 git init
