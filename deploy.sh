@@ -12,6 +12,7 @@ cd dist
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME
 git init
+git branch -m main
 
 # provide identity
 git config user.email "erik.sund.berg20@hotmail.se"
