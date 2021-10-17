@@ -27,5 +27,7 @@ body {
   text-align: center;
   color: #2c3e50;
   min-height: inherit;
+  display: flex;
+  flex-direction: column;
 }
 </style>
