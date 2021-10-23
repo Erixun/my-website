@@ -2,7 +2,10 @@
   <!-- MOBILE FIRST -->
   <header>
     <h1>erixun.dev</h1>
-    <nav>nav?</nav>
+    <nav>collapsible nav?</nav>
+    <article class="light-switch" title="light-bulb" icon="💡">
+      💡
+    </article>
   </header>
   <main>
     <section class="presentation">
@@ -52,7 +55,9 @@
       </article>
     </section>
   </main>
-  <footer>contact info, made with, made by, hosted at</footer>
+  <footer>
+    contact info, made with, made by, hosted at, git repo, last updated
+  </footer>
 </template>
 
 <script lang="ts">
@@ -84,11 +89,19 @@ ol {
 
 header {
   display: flex;
-  h1 {
-    flex-grow: 2;
+  padding: 1rem;
+  align-items: baseline;
+  h1,
+  .light-switch {
+    flex-grow: 1;
   }
   nav {
-    flex-grow: 8;
+    flex-grow: 4;
+  }
+  .light-switch:not(.off) {
+    text-shadow: 0 0 10px orange;
+    position: relative;
+    font-size: 1rem;
   }
 }
 
