@@ -3,9 +3,7 @@
   <header>
     <h1>erixun.dev</h1>
     <nav>collapsible nav?</nav>
-    <article class="light-switch" title="light-bulb" icon="💡">
-      💡
-    </article>
+    <article class="light-switch" title="light-bulb" icon="💡">💡</article>
   </header>
   <main>
     <section class="presentation">
@@ -71,6 +69,23 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+/* GLOBAL STYLING */
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
 #app > * {
   border: 1px solid grey;
 }
@@ -87,6 +102,7 @@ ol {
   padding-left: 0;
 }
 
+/* HEADER STYLING */
 header {
   display: flex;
   padding: 1rem;
@@ -105,6 +121,7 @@ header {
   }
 }
 
+/* MAIN STYLING */
 main {
   flex-grow: 8;
   display: flex;
@@ -137,6 +154,7 @@ main {
     }
   }
 
+  /* MEDIA QUERIES */
   @media screen and (min-width: 700px) {
     .presentation article {
       order: 0;
