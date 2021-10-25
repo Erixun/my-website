@@ -44,7 +44,7 @@ export default defineComponent({
 
     onMounted(() => {
       const prefersDark = localStorage.getItem(hasLightsOff);
-      if (prefersDark === "false") {
+      if (prefersDark === "true") {
         toggleLightMode();
       }
     });
