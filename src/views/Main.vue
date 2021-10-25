@@ -1,73 +1,72 @@
 <template>
   <!-- MOBILE FIRST -->
-    <header>
-      <section class="my-title">
-        <h1>erixun.me</h1>
-      </section>
-      <section class="navigation">
-        <nav>nav</nav>
-      </section>
-      <section class="light-switch">
-        <TheLightBulb />
-      </section>
-    </header>
-    <main>
-      <section class="presentation">
-        <article>
-          <h2>Introduction</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae,
-            culpa nobis, placeat maiores rem, eos quod illum aspernatur amet
-            quidem quae. Quisquam, nemo facere. Dolorem harum obcaecati odio
-            nobis earum.
-          </p>
-        </article>
-        <aside>
-          <h2>A bit about me</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Perspiciatis, ex culpa facere natus voluptates ipsum voluptas,
-            nostrum nobis deleniti cupiditate odit, a sunt et? Assumenda
-            suscipit laboriosam expedita consequatur optio.
-          </p>
-        </aside>
-      </section>
-      <section class="powers">
-        <h2>My Powers <span emoji>💪</span></h2>
+  <header>
+    <section class="my-title">
+      <h1>erixun.me</h1>
+    </section>
+    <section class="navigation">
+      <nav>nav</nav>
+    </section>
+    <section class="light-switch">
+      <TheLightBulb />
+    </section>
+  </header>
+  <main>
+    <section class="presentation">
+      <article>
+        <h2>Introduction</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, culpa
+          nobis, placeat maiores rem, eos quod illum aspernatur amet quidem
+          quae. Quisquam, nemo facere. Dolorem harum obcaecati odio nobis earum.
+        </p>
+      </article>
+      <aside>
+        <h2>A bit about me</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          Perspiciatis, ex culpa facere natus voluptates ipsum voluptas, nostrum
+          nobis deleniti cupiditate odit, a sunt et? Assumenda suscipit
+          laboriosam expedita consequatur optio.
+        </p>
+      </aside>
+    </section>
+    <section class="powers">
+      <h2>My Powers <span emoji>💪</span></h2>
+      <ul>
+        <li>Vue</li>
+        <li>TypeScript</li>
+        <li>ASP.NET</li>
+      </ul>
+    </section>
+    <section class="currently">
+      <h2>I am currently...</h2>
+      <article class="currently-learning">
+        <h3>Learning <span emoji>🧐</span></h3>
         <ul>
-          <li>Vue</li>
-          <li>TypeScript</li>
-          <li>ASP.NET</li>
+          <li>Azure Functions</li>
+          <li>React</li>
+          <li>Clean Code</li>
         </ul>
-      </section>
-      <section class="currently">
-        <h2>I am currently...</h2>
-        <article class="currently-learning">
-          <h3>Learning <span emoji>🧐</span></h3>
-          <ul>
-            <li>Azure Functions</li>
-            <li>React</li>
-            <li>Clean Code</li>
-          </ul>
-        </article>
-        <article class="currently-workingon">
-          <h3>Working on <span emoji>🛠️</span></h3>
-          <ul>
-            <li>A KanBan app</li>
-            <li>My own website</li>
-            <li>An Investment app</li>
-          </ul>
-        </article>
-      </section>
-    </main>
-    <footer>
-      contact info, made with, made by, hosted at, git repo, last updated
-    </footer>
+      </article>
+      <article class="currently-workingon">
+        <h3>Working on <span emoji>🛠️</span></h3>
+        <ul>
+          <li>A KanBan app</li>
+          <li>My own website</li>
+          <li>An Investment app</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+  <footer>
+    contact info, made with, made by, hosted at, git repo, last updated
+  </footer>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import TheLightBulb from '@/components/TheLightBulb.vue'
+import TheLightBulb from "@/components/TheLightBulb.vue";
 
 export default defineComponent({
   name: "main-view",
@@ -123,7 +122,7 @@ body {
   color: unset;
   background-color: unset;
   h1 {
-    color: var(--title-color)
+    color: var(--title-color);
   }
 }
 
