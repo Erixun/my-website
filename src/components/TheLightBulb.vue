@@ -32,14 +32,14 @@ export default defineComponent({
       const app = document.getElementById("app");
       if (app) {
         const classList = app.classList;
-        classList.toggle("lights-off");
+        classList.toggle("dark");
         storeLightMode(classList);
       }
     };
 
     const hasLightsOff = "hasLightsOff";
     const storeLightMode = (classList: DOMTokenList) => {
-      localStorage.setItem(hasLightsOff, `${classList.contains("lights-off")}`);
+      localStorage.setItem(hasLightsOff, `${classList.contains("dark")}`);
     };
 
     onMounted(() => {
