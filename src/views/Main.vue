@@ -88,7 +88,7 @@ export default defineComponent({
   --fade-in-duration: 1.5s;
 }
 
-.lights-off {
+.dark {
   color: var(--darkmode-default-text);
   background-color: var(--darkmode-default-bgc);
 
@@ -115,10 +115,10 @@ body {
   display: flex;
   flex-direction: column;
 }
-#app.lights-off {
+#app.dark {
   transition: color var(--fade-in-duration) ease-out;
 }
-#app:not(.lights-off) {
+#app:not(.dark) {
   color: unset;
   background-color: unset;
   h1 {
