@@ -29,9 +29,9 @@ export default defineComponent({
     };
 
     const switchLightMode = () => {
-      const mainView = document.getElementById("main-view");
-      if (mainView) {
-        const classList = mainView.classList;
+      const app = document.getElementById("app");
+      if (app) {
+        const classList = app.classList;
         classList.toggle("lights-off");
         storeLightMode(classList);
       }

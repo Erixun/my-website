@@ -1,6 +1,5 @@
 <template>
   <!-- MOBILE FIRST -->
-  <div class="container">
     <header>
       <section class="my-title">
         <h1>erixun.me</h1>
@@ -64,7 +63,6 @@
     <footer>
       contact info, made with, made by, hosted at, git repo, last updated
     </footer>
-  </div>
 </template>
 
 <script lang="ts">
@@ -109,7 +107,7 @@ body {
   }
 }
 
-.container {
+#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -118,10 +116,10 @@ body {
   display: flex;
   flex-direction: column;
 }
-.container.lights-off {
+#app.lights-off {
   transition: color var(--fade-in-duration) ease-out;
 }
-.container:not(.lights-off) {
+#app:not(.lights-off) {
   color: unset;
   background-color: unset;
   h1 {
@@ -129,7 +127,7 @@ body {
   }
 }
 
-.container > * {
+#app > * {
   border-bottom: 1px solid;
   box-sizing: border-box;
 }
