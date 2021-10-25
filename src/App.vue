@@ -1,5 +1,5 @@
 <template>
-  <main-view id="main-view" class="lights-off" />
+  <main-view id="main-view" />
 </template>
 
 <script lang="ts">
