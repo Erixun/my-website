@@ -1,13 +1,13 @@
 <template>
   <!-- MOBILE FIRST -->
   <header>
-    <section class="my-title">
+    <section class="left">
       <h1>erixun.me</h1>
     </section>
-    <section class="navigation">
+    <section class="mid">
       <nav>nav</nav>
     </section>
-    <section class="light-switch">
+    <section class="right">
       <TheLightBulb />
     </section>
   </header>
@@ -160,7 +160,7 @@ header {
       text-transform: unset;
     }
   }
-  .light-switch {
+  .right {
     text-align: right;
     .light-bulb {
       cursor: pointer;
