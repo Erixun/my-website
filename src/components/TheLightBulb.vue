@@ -22,10 +22,20 @@ export default defineComponent({
       switchLightMode();
     };
 
+    const handleFadeIn = (el: HTMLElement) => {
+      el.classList.add("lb-fade-in");
+      setTimeout(() => {
+        el.classList.remove("lb-fade-in");
+      }, 1500);
+    };
+
     const switchLightBulb = () => {
-      const lightBulb = document.getElementById("light-bulb");
-      lightBulb?.classList.toggle("off");
-      lightBulb?.blur();
+      const lb = document.getElementById("light-bulb")!;
+      lb.classList.toggle("off");
+      lb.blur();
+      if (lb.classList.contains("off")) {
+        handleFadeIn(lb);
+      }
     };
 
     const switchLightMode = () => {
@@ -53,3 +63,71 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss">
+.light-bulb {
+  cursor: pointer;
+  position: relative;
+  font-size: 1rem;
+  font-weight: bolder;
+  padding: 0 0.2rem 0 1.8rem;
+}
+.light-bulb.off {
+  color: transparent;
+  text-shadow: 0 0 10px #fff;
+}
+.light-bulb:focus,
+.light-bulb:focus-visible,
+.light-bulb:hover {
+  animation: vibrate 0.1s linear infinite;
+}
+
+.light-bulb.off:focus,
+.light-bulb.off:focus-visible {
+  text-shadow: 0 0 1px #fff, 0 0 10px orange;
+}
+.light-bulb.off::before {
+  content: attr(icon);
+  position: absolute;
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0.5);
+}
+.light-bulb:not(.off) {
+  text-shadow: 0 0 10px orange;
+  filter: blur(0.6px) opacity(0.6);
+}
+.light-bulb:not(.off):focus,
+.light-bulb:not(.off):focus-visible {
+  filter: brightness(105%);
+  outline: none;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes vibrate {
+  0%,
+  100% {
+    transform: translate(0%, -1%);
+  }
+  25% {
+    transform: translate(-1%, 0%);
+  }
+  50% {
+    transform: translate(0%, 1%);
+  }
+  75% {
+    transform: translate(1%, 0%);
+  }
+}
+
+.lb-fade-in {
+  animation: bulb-fade-in var(--fade-in-duration) ease-out;
+}
+
+@keyframes bulb-fade-in {
+  0% {
+    text-shadow: 0 0 0 transparent;
+  }
+  100% {
+    text-shadow: 0 0 10px #fff;
+  }
+}
+</style>

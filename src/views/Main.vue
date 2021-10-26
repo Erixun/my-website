@@ -1,13 +1,13 @@
 <template>
   <!-- MOBILE FIRST -->
   <header>
-    <section class="my-title">
+    <section class="logo ltext">
       <h1>erixun.me</h1>
     </section>
-    <section class="navigation">
-      <nav>nav</nav>
+    <section class="mid">
+      <!-- <nav>nav</nav> -->
     </section>
-    <section class="light-switch">
+    <section class="rtext">
       <TheLightBulb />
     </section>
   </header>
@@ -69,10 +69,8 @@ import { defineComponent } from "vue";
 import TheLightBulb from "@/components/TheLightBulb.vue";
 
 export default defineComponent({
-  name: "main-view",
+  name: "MainView",
   components: { TheLightBulb },
-  // setup() {
-  // },
 });
 </script>
 
@@ -86,6 +84,10 @@ export default defineComponent({
   --title-color: darkcyan;
   --emphatic-color: #590000;
   --fade-in-duration: 1.5s;
+}
+
+[emoji] {
+  display: inline-block;
 }
 
 .dark {
@@ -145,49 +147,33 @@ ol {
   padding-left: 0;
 }
 
+.ltext {
+  text-align: left;
+}
+.rtext {
+  text-align: right;
+}
+
+.padl {
+  padding-left: 1.6rem;
+}
+
 /* HEADER STYLING */
 header {
   display: flex;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   align-items: baseline;
   justify-content: space-evenly;
   section {
     flex-grow: 1;
-    h1 {
-      font-size: 1.1rem;
-      font-weight: bold;
-      font-style: italic;
-      text-transform: unset;
-    }
   }
-  .light-switch {
-    text-align: right;
-    .light-bulb {
-      cursor: pointer;
-      position: relative;
-      font-size: 1rem;
-      font-weight: bolder;
-      padding: 0 1rem;
-    }
-    .light-bulb.off {
-      color: transparent;
-      text-shadow: 0 0 10px #fff;
-      animation: bulb-fade-in var(--fade-in-duration) ease-out;
-    }
-    .light-bulb.off:focus {
-      text-shadow: 0 0 1px #fff;
-    }
-    .light-bulb.off::before {
-      content: attr(icon);
-      position: absolute;
-      text-shadow: 0 0 0 rgba(0, 0, 0, 0.5);
-    }
-    .light-bulb:not(.off) {
-      text-shadow: 0 0 10px orange;
-      filter: blur(0.6px) opacity(0.6);
-    }
-    .light-bulb:not(.off):focus {
-      filter: brightness(105%);
+  .logo {
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-style: italic;
+    padding-left: 1vw;
+    h1 {
+      text-transform: unset;
     }
   }
 }
