@@ -24,8 +24,11 @@ export default defineComponent({
 
     const handleFadeIn = (el: HTMLElement) => {
       el.classList.add("lb-fade-in");
+      const emojis = document.querySelectorAll("[emoji]");
+      emojis.forEach(e => e.classList.add("emoji-fade-in"))
       setTimeout(() => {
         el.classList.remove("lb-fade-in");
+        emojis.forEach(e => e.classList.remove("emoji-fade-in"))
       }, 1500);
     };
 

@@ -97,7 +97,7 @@ export default defineComponent({
   color: var(--darkmode-default-text);
   background-color: var(--darkmode-default-bgc);
 
-  [emoji] {
+  .emoji-fade-in {
     animation: emoji-fade-in var(--fade-in-duration) ease-out;
   }
 }
@@ -244,24 +244,10 @@ footer {
   }
 }
 
-*:hover > .rotates {
-  animation: emoji-rotate 1.5s linear infinite;
-}
-
-*:hover > .flexes {
+h2:hover [emoji].flexes:not(.emoji-fade-in) {
   animation: emoji-flex 500ms linear forwards,
     0.1s emoji-quiver 500ms linear infinite;
 }
-
-@keyframes emoji-rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(359deg);
-  }
-}
-
 @keyframes emoji-flex {
   to {
     transform: rotate(30deg);
@@ -278,13 +264,25 @@ footer {
     transform: rotate(30deg) translateY(2%);
   }
 }
+
+.currently-workingon:hover [emoji].rotates:not(.emoji-fade-in) {
+  animation: emoji-rotate 1.5s linear infinite;
+}
+
+@keyframes emoji-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
 .flipped {
   transform: rotateY(180deg);
 }
-.studies {
-  transition: all 1s;
-}
-*:hover > .studies {
+
+*:hover > .studies:not(.emoji-fade-in) {
   --default: rotateY(180deg);
   --checkOut: rotateY(180deg) rotateZ(15deg);
   --oneDown: translateY(100%);
@@ -292,7 +290,7 @@ footer {
   --threeDown: translateY(300%);
   $airtime: 1s;
   $squashtime: 0.2s;
-  $gravity: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  $gravity: cubic-bezier(0.165, 0.84, 0.44, 1);
   animation: $squashtime emoji-squash 0s ease-in normal,
     $airtime emoji-jump $squashtime $gravity normal,
     $airtime emoji-jump $airtime + $squashtime $gravity reverse,
