@@ -3,17 +3,16 @@
   <header>
     <section class="logo ltext">
       <h1>erixun.me</h1>
+      <TheLightBulb />
     </section>
     <section class="mid">
       <!-- <nav>nav</nav> -->
     </section>
-    <section class="rtext">
-      <TheLightBulb />
-    </section>
+    <section class=""></section>
   </header>
   <main>
     <section class="presentation">
-      <article>
+      <article class="flex-col flex-center">
         <h2>Introduction</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, culpa
@@ -96,6 +95,7 @@ export default defineComponent({
   --title-color: darkcyan;
   --emphatic-color: #590000;
   --fade-in-duration: 1.5s;
+  --cont-max-width: 1500px;
 }
 
 /* GENERAL STYLING */
@@ -165,6 +165,10 @@ body {
 }
 .padl {
   padding-left: 1.6rem;
+}
+.lg-container {
+  max-width: var(--cont-max-width);
+  padding: 0 2vw;
 }
 .flex-col {
   display: flex;
