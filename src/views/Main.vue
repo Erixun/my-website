@@ -32,7 +32,7 @@
       </aside>
     </section>
     <section class="powers">
-      <h2>My Powers <span emoji>💪</span></h2>
+      <h2>My Powers <span class="flexes" emoji>💪</span></h2>
       <ul>
         <li>Vue</li>
         <li>TypeScript</li>
@@ -41,16 +41,19 @@
     </section>
     <section class="currently">
       <h2>I am currently...</h2>
-      <article class="currently-learning">
-        <h3>Learning <span emoji>🧐</span></h3>
-        <ul>
+      <article class="currently-learning ltext">
+        <h3><span class="flipped studies" emoji>🧐</span> Learning</h3>
+        <ul class="padl">
           <li>Azure Functions</li>
           <li>React</li>
           <li>Clean Code</li>
         </ul>
       </article>
-      <article class="currently-workingon">
-        <h3>Working on <span emoji>🛠️</span></h3>
+      <article class="currently-workingon ltext">
+        <h3>
+          Working on
+          <span class="rotates" emoji="🛠️" title="hammer_and_wrench">🛠️</span>
+        </h3>
         <ul>
           <li>A KanBan app</li>
           <li>My own website</li>
@@ -241,12 +244,125 @@ footer {
   }
 }
 
-@keyframes bulb-fade-in {
+*:hover > .rotates {
+  animation: emoji-rotate 1.5s linear infinite;
+}
+
+*:hover > .flexes {
+  animation: emoji-flex 500ms linear forwards,
+    0.1s emoji-quiver 500ms linear infinite;
+}
+
+@keyframes emoji-rotate {
   0% {
-    text-shadow: 0 0 0 transparent;
+    transform: rotate(0deg);
   }
   100% {
-    text-shadow: 0 0 10px #fff;
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes emoji-flex {
+  to {
+    transform: rotate(30deg);
+  }
+}
+@keyframes emoji-quiver {
+  0% {
+    transform: rotate(30deg);
+  }
+  50% {
+    transform: rotate(30deg) translateY(-2%);
+  }
+  100% {
+    transform: rotate(30deg) translateY(2%);
+  }
+}
+.flipped {
+  transform: rotateY(180deg);
+}
+.studies {
+  transition: all 1s;
+}
+*:hover > .studies {
+  --default: rotateY(180deg);
+  --checkOut: rotateY(180deg) rotateZ(15deg);
+  --oneDown: translateY(100%);
+  --twoDown: translateY(200%);
+  --threeDown: translateY(300%);
+  $airtime: 1s;
+  $squashtime: 0.2s;
+  $gravity: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  animation: $squashtime emoji-squash 0s ease-in normal,
+    $airtime emoji-jump $squashtime $gravity normal,
+    $airtime emoji-jump $airtime + $squashtime $gravity reverse,
+    $squashtime emoji-squash 2 * $airtime + $squashtime ease-out reverse;
+}
+@keyframes emoji-squash {
+  from {
+    transform: scaleY(1) translateY(0%) var(--default);
+  }
+  33.33% {
+    transform: scaleY(0.8) translateY(10%) var(--default);
+  }
+  66.67% {
+    transform: scaleY(1) translateY(0%) var(--default);
+  }
+  to {
+    transform: scaleY(1.2) translateY(-10%) var(--default);
+  }
+}
+@keyframes emoji-jump {
+  from {
+    transform: translateY(-10%) var(--default) scaleY(1.2);
+  }
+  // 5% {
+  //   transform: translateY(10%) var(--default) scaleY(0.8);
+  // }
+  // 10% {
+  //   transform: translateY(-10%) var(--default) scaleY(1.2);
+  // }
+  to {
+    transform: translateY(-200%) var(--default) scaleY(1);
+  }
+}
+
+@keyframes emoji-studious {
+  from {
+    transform: translateY(0) var(--default);
+  }
+  5% {
+    transform: translateY(0) var(--default) scaleY(0.9);
+  }
+  10% {
+    transform: translateY(100%) var(--default) scaleY(0.9);
+  }
+  20% {
+    transform: var(--oneDown) var(--checkOut);
+  }
+  30% {
+    transform: var(--oneDown) var(--default);
+  }
+  40% {
+    transform: translateY(200%) var(--default);
+  }
+  50% {
+    transform: translateY(200%) var(--checkOut);
+  }
+  60% {
+    transform: translateY(200%) var(--default);
+  }
+  70% {
+    transform: translateY(300%) var(--default);
+  }
+  80% {
+    transform: translateY(300%) var(--checkOut);
+  }
+  90% {
+    transform: translateY(300%) var(--default);
+  }
+  to {
+    transform: translateY(300%) var(--default);
   }
 }
 </style>
