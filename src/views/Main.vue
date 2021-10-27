@@ -32,7 +32,10 @@
       </aside>
     </section>
     <section class="powers">
-      <h2>My Powers <span class="flexes" emoji>💪</span></h2>
+      <h2>
+        My Powers
+        <span class="flexes" emoji title="muscle">💪</span>
+      </h2>
       <ul>
         <li>Vue</li>
         <li>TypeScript</li>
@@ -42,7 +45,12 @@
     <section class="currently">
       <h2>I am currently...</h2>
       <article class="currently-learning ltext">
-        <h3><span class="flipped studies" emoji>🧐</span> Learning</h3>
+        <h3>
+          <div class="shadow-wrapper">
+            <span class="flipped studies" emoji title="monocle_face">🧐</span>
+          </div>
+          Learning
+        </h3>
         <ul class="padl">
           <li>Azure Functions</li>
           <li>React</li>
@@ -52,7 +60,7 @@
       <article class="currently-workingon ltext">
         <h3>
           Working on
-          <span class="rotates" emoji="🛠️" title="hammer_and_wrench">🛠️</span>
+          <span class="rotates" emoji title="hammer_and_wrench">🛠️</span>
         </h3>
         <ul>
           <li>A KanBan app</li>
@@ -78,6 +86,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+/* VARIABLES */
 :root {
   --darkmode-default-bgc: #131516;
   --darkmode-neutral-text: #d8d4cf;
@@ -89,76 +98,96 @@ export default defineComponent({
   --fade-in-duration: 1.5s;
 }
 
-[emoji] {
-  display: inline-block;
-}
-
-.dark {
-  color: var(--darkmode-default-text);
-  background-color: var(--darkmode-default-bgc);
-
-  .emoji-fade-in {
-    animation: emoji-fade-in var(--fade-in-duration) ease-out;
-  }
-}
-
-/* GLOBAL STYLING */
+/* GENERAL STYLING */
 body {
   margin: 0;
   min-height: 100vh;
+
   #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
     min-height: inherit;
+    display: flex;
+    flex-direction: column;
+
+    [emoji] {
+      display: inline-block;
+    }
+  }
+  #app.dark {
+    transition: color var(--fade-in-duration) ease-out;
+    color: var(--darkmode-default-text);
+    background-color: var(--darkmode-default-bgc);
+
+    .emoji-fade-in {
+      animation: emoji-fade-in var(--fade-in-duration) ease-out;
+    }
+  }
+  #app:not(.dark) {
+    color: unset;
+    background-color: unset;
+    h1 {
+      color: var(--title-color);
+    }
+  }
+
+  #app > * {
+    border-bottom: 1px solid;
+    box-sizing: border-box;
+  }
+
+  h1,
+  h2,
+  h3,
+  button {
+    all: unset;
+    text-transform: capitalize;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+    padding-left: 0;
   }
 }
 
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  min-height: inherit;
-  display: flex;
-  flex-direction: column;
+/* HELPER CLASSES */
+.ib {
+  display: inline-block;
 }
-#app.dark {
-  transition: color var(--fade-in-duration) ease-out;
-}
-#app:not(.dark) {
-  color: unset;
-  background-color: unset;
-  h1 {
-    color: var(--title-color);
-  }
-}
-
-#app > * {
-  border-bottom: 1px solid;
-  box-sizing: border-box;
-}
-
-h1,
-h2,
-h3,
-button {
-  all: unset;
-  text-transform: capitalize;
-}
-
-ul,
-ol {
-  list-style: none;
-  padding-left: 0;
-}
-
 .ltext {
   text-align: left;
 }
 .rtext {
   text-align: right;
 }
-
 .padl {
   padding-left: 1.6rem;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+.shadow-wrapper {
+  display: inline-block;
+  position: relative;
+}
+.shadow-wrapper::after {
+  position: absolute;
+  width: 70%;
+  height: 12%;
+  left: 12%;
+  border-radius: 50%;
+  z-index: -1;
+  bottom: 25%;
+  content: "";
+  box-shadow: 0 5px 2px rgba(0, 0, 0, 0.34);
 }
 
 /* HEADER STYLING */
@@ -234,7 +263,7 @@ footer {
   }
 }
 
-/* KEYFRAMES */
+/* ANIMATIONS */
 @keyframes emoji-fade-in {
   0% {
     color: transparent;
@@ -266,7 +295,7 @@ h2:hover [emoji].flexes:not(.emoji-fade-in) {
 }
 
 .currently-workingon:hover [emoji].rotates:not(.emoji-fade-in) {
-  animation: emoji-rotate 1.5s linear infinite;
+  animation: emoji-rotate 1.5s linear 3;
 }
 
 @keyframes emoji-rotate {
@@ -281,86 +310,56 @@ h2:hover [emoji].flexes:not(.emoji-fade-in) {
 .flipped {
   transform: rotateY(180deg);
 }
-
-*:hover > .studies:not(.emoji-fade-in) {
-  --default: rotateY(180deg);
-  --checkOut: rotateY(180deg) rotateZ(15deg);
-  --oneDown: translateY(100%);
-  --twoDown: translateY(200%);
-  --threeDown: translateY(300%);
+.currently-learning:hover {
   $airtime: 1s;
   $squashtime: 0.2s;
+  $halftime: $airtime + $squashtime;
+  $fulltime: 2 * $halftime;
   $gravity: cubic-bezier(0.165, 0.84, 0.44, 1);
-  animation: $squashtime emoji-squash 0s ease-in normal,
-    $airtime emoji-jump $squashtime $gravity normal,
-    $airtime emoji-jump $airtime + $squashtime $gravity reverse,
-    $squashtime emoji-squash 2 * $airtime + $squashtime ease-out reverse;
+  .studies:not(.emoji-fade-in) {
+    --flipped: rotateY(180deg);
+    animation: $squashtime emoji-squash 0s ease-in normal,
+      $airtime emoji-jump $squashtime $gravity normal,
+      $airtime emoji-jump $halftime $gravity reverse,
+      $squashtime emoji-squash 2 * $airtime + $squashtime ease-out reverse;
+  }
+  .shadow-wrapper::after {
+    animation: $airtime less-shadow $squashtime $gravity normal,
+      $airtime less-shadow $halftime $gravity reverse;
+  }
+}
+@keyframes less-shadow {
+  from {
+    width: 70%;
+    left: 12%;
+    box-shadow: 0 5px 2px rgba(0, 0, 0, 0.34);
+  }
+  to {
+    width: 50%;
+    left: 1vw;
+    box-shadow: 0 5px 2px rgba(0, 0, 0, 0.04);
+  }
 }
 @keyframes emoji-squash {
   from {
-    transform: scaleY(1) translateY(0%) var(--default);
+    transform: scaleY(1) translateY(0%) var(--flipped);
   }
   33.33% {
-    transform: scaleY(0.8) translateY(10%) var(--default);
+    transform: scaleY(0.8) translateY(10%) var(--flipped);
   }
   66.67% {
-    transform: scaleY(1) translateY(0%) var(--default);
+    transform: scaleY(1) translateY(0%) var(--flipped);
   }
   to {
-    transform: scaleY(1.2) translateY(-10%) var(--default);
+    transform: scaleY(1.2) translateY(-10%) var(--flipped);
   }
 }
 @keyframes emoji-jump {
   from {
-    transform: translateY(-10%) var(--default) scaleY(1.2);
-  }
-  // 5% {
-  //   transform: translateY(10%) var(--default) scaleY(0.8);
-  // }
-  // 10% {
-  //   transform: translateY(-10%) var(--default) scaleY(1.2);
-  // }
-  to {
-    transform: translateY(-200%) var(--default) scaleY(1);
-  }
-}
-
-@keyframes emoji-studious {
-  from {
-    transform: translateY(0) var(--default);
-  }
-  5% {
-    transform: translateY(0) var(--default) scaleY(0.9);
-  }
-  10% {
-    transform: translateY(100%) var(--default) scaleY(0.9);
-  }
-  20% {
-    transform: var(--oneDown) var(--checkOut);
-  }
-  30% {
-    transform: var(--oneDown) var(--default);
-  }
-  40% {
-    transform: translateY(200%) var(--default);
-  }
-  50% {
-    transform: translateY(200%) var(--checkOut);
-  }
-  60% {
-    transform: translateY(200%) var(--default);
-  }
-  70% {
-    transform: translateY(300%) var(--default);
-  }
-  80% {
-    transform: translateY(300%) var(--checkOut);
-  }
-  90% {
-    transform: translateY(300%) var(--default);
+    transform: translateY(-10%) var(--flipped) scaleY(1.2);
   }
   to {
-    transform: translateY(300%) var(--default);
+    transform: translateY(-200%) var(--flipped) scaleY(1);
   }
 }
 </style>
