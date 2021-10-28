@@ -24,8 +24,11 @@ export default defineComponent({
 
     const handleFadeIn = (el: HTMLElement) => {
       el.classList.add("lb-fade-in");
+      const emojis = document.querySelectorAll("[emoji]");
+      emojis.forEach(e => e.classList.add("emoji-fade-in"))
       setTimeout(() => {
         el.classList.remove("lb-fade-in");
+        emojis.forEach(e => e.classList.remove("emoji-fade-in"))
       }, 1500);
     };
 
@@ -70,7 +73,9 @@ export default defineComponent({
   position: relative;
   font-size: 1rem;
   font-weight: bolder;
-  padding: 0 0.2rem 0 1.8rem;
+  font-style: normal;
+  vertical-align: text-bottom;
+  padding: 0 .6rem;
 }
 .light-bulb.off {
   color: transparent;
