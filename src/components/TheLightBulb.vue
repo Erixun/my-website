@@ -22,14 +22,16 @@ export default defineComponent({
       switchLightMode();
     };
 
-    const handleFadeIn = (el: HTMLElement) => {
-      el.classList.add("lb-fade-in");
-      const emojis = document.querySelectorAll("[emoji]");
-      emojis.forEach(e => e.classList.add("emoji-fade-in"))
-      setTimeout(() => {
-        el.classList.remove("lb-fade-in");
-        emojis.forEach(e => e.classList.remove("emoji-fade-in"))
-      }, 1500);
+    const applyDarkness = () => {
+      const mask = document.getElementById("mask");
+      if (mask) {
+        mask.classList.add("darkness", "fade");
+        setTimeout(() => {
+          mask.classList.remove("darkness", "fade");
+        }, 1500);
+      } else {
+        console.error("Element with id mask not found")
+      }
     };
 
     const switchLightBulb = () => {
@@ -37,7 +39,7 @@ export default defineComponent({
       lb.classList.toggle("off");
       lb.blur();
       if (lb.classList.contains("off")) {
-        handleFadeIn(lb);
+        applyDarkness();
       }
     };
 
@@ -75,7 +77,7 @@ export default defineComponent({
   font-weight: bolder;
   font-style: normal;
   vertical-align: text-bottom;
-  padding: 0 .6rem;
+  padding: 0 0.6rem;
 }
 .light-bulb.off {
   color: transparent;
