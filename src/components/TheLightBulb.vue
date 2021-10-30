@@ -77,7 +77,7 @@ export default defineComponent({
   font-weight: bolder;
   font-style: normal;
   vertical-align: text-bottom;
-  padding: 0 0.6rem;
+  padding: 0 0.6rem 1px;
 }
 .light-bulb.off {
   color: transparent;
