@@ -200,6 +200,7 @@ body {
     min-height: inherit;
     display: flex;
     flex-direction: column;
+    font-size: 0.97em;
 
     [emoji] {
       display: inline-block;
