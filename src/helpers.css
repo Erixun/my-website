@@ -1,0 +1,37 @@
+.ib {
+  display: inline-block;
+}
+.cap {
+  text-transform: capitalize;
+}
+.ltext {
+  text-align: left;
+}
+.rtext {
+  text-align: right;
+}
+.padl-05 {
+  padding-left: 0.5em;
+}
+.padl-16 {
+  padding-left: 1.6em;
+}
+.lg-container {
+  width: 100%;
+  max-width: var(--cont-max-width);
+  padding: 0 2vw;
+  margin: 0 auto;
+}
+.fx {
+  display: flex;
+}
+.fx-col {
+  display: flex;
+  flex-direction: column;
+}
+.fx-just-center {
+  justify-content: center;
+}
+.full-width {
+  width: 100%;
+}
