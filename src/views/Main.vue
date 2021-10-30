@@ -13,8 +13,8 @@
     </div>
   </header>
   <main>
-    <div class="lg-container">
-      <section class="presentation">
+    <section class="presentation">
+      <div class="lg-container">
         <aside class="portrait flx-col flx-just-center">
           <div class="shadow-wrapper">
             <figure>
@@ -50,8 +50,8 @@
           </p>
           <div>[contact-link icons]</div>
         </article>
-      </section>
-    </div>
+      </div>
+    </section>
     <section class="powers stand-out">
       <div class="lg-container">
         <h2>
@@ -63,6 +63,7 @@
           <li>TypeScript</li>
           <li>ASP.NET</li>
         </ul>
+        [Show More... ]
       </div>
     </section>
     <section class="currently">
@@ -96,7 +97,39 @@
     </section>
   </main>
   <footer>
-    contact info, made with, made by, hosted at, git repo, last updated
+    <div class="lg-container grid">
+      <section class="contact ltext">
+        <h4>Contact</h4>
+        <ul>
+          <li>Email</li>
+          <li>Phone</li>
+          <li>Linkedin</li>
+        </ul>
+      </section>
+      <section class="site-info ltext">
+        <h4>Site info</h4>
+        <ul>
+          <li>Made with Vue.js</li>
+          <li>Hosted on github pages</li>
+          <li>Source code</li>
+        </ul>
+      </section>
+      <section class="credits ltext">
+        <h4>Credits</h4>
+        <ul>
+          <li>Made by Erik Sundberg</li>
+          <li>Template by Erik Sundberg</li>
+          <li>Inspired by Smashing magazine</li>
+        </ul>
+      </section>
+      <section class="site-status ltext">
+        <h4>Status</h4>
+        <ul>
+          <li>Version: 1.2.7</li>
+          <li>Last updated: Oct 29, 2021</li>
+        </ul>
+      </section>
+    </div>
   </footer>
   <div id="mask"></div>
 </template>
@@ -129,11 +162,19 @@ export default defineComponent({
   --darkmode-welcome-color: #009d00;
   --emphatic-text-color-a: #d33a2c;
   --emphatic-text-color-b: #a7453c;
-  --emphatic-bgc: #ffe7e775;
+  --emphatic-bgc: #e7fbff75; //#ffe7e775;
   --emphatic-border: 1px solid #a7453c21;
   --emphatic-bs: 0px 2px 4px 0px lightgray;
-  --a-section-bgc: #e8e7dd82;
-  --footer-bgc: #e8e7dd;
+  --a-section-bgc: #fcfaf0;
+  --section-linear-gradient: linear-gradient(
+    to bottom,
+    var(--base-bgc),
+    95%,
+    #f9f6e9
+  );
+  --base-bgc: #fffcf2;
+  --neutral-text: #474747;
+  --footer-bgc: #e8e7dd91; // #e8e7dd;
   --title-color: darkcyan;
   --welcome-color: #007100;
   --border-color: #848484a3;
@@ -189,7 +230,7 @@ body {
   }
   #app:not(.dark) {
     color: unset;
-    background-color: unset;
+    background-color: var(--base-bgc);
     h1 {
       color: var(--title-color);
     }
@@ -198,6 +239,8 @@ body {
       color: var(--emphatic-text-color-b);
       border-top: var(--emphatic-border);
       border-bottom: var(--emphatic-border);
+      z-index: 3000;
+      // box-shadow: 0px 2px 10px -5px #80808066;
     }
   }
 
@@ -301,7 +344,7 @@ body {
   height: 12%;
   left: 12%;
   border-radius: 50%;
-  z-index: -1;
+  z-index: 0;
   bottom: 25%;
   content: "";
   box-shadow: 0 5px 2px rgba(0, 0, 0, 0.34);
@@ -325,13 +368,16 @@ header.primary {
   }
 }
 #app:not(.dark) header.primary {
-  background: #fff;
-  box-shadow: 0 -8px 20px 0 lightgrey;
+  background: inherit; //var(--base-bgc);
+  box-shadow: 0 -8px 20px 0 #d3d3d3a3;
 }
 
 /* MAIN STYLING */
 #app:not(.dark) > main {
-  box-shadow: 0 -8px 20px 0 lightgrey;
+  // box-shadow: 0 -8px 20px 0 lightgrey;
+  section:not(.stand-out) {
+    background: var(--section-linear-gradient);
+  }
   section:nth-child(even):not(.stand-out) {
     background-color: var(--a-section-bgc);
   }
@@ -364,12 +410,13 @@ main {
     display: flex;
     padding: 4em 1em 5em;
   }
-  .presentation {
+  .presentation > .lg-container {
     justify-content: space-evenly;
     display: flex;
     flex-wrap: wrap;
     align-content: space-evenly;
     column-gap: 3%;
+    flex-flow: row-reverse wrap;
 
     article {
       flex-basis: 500px;
@@ -411,6 +458,7 @@ main {
         max-width: 180px;
         width: 14vw;
         min-width: 110px;
+        border-radius: 2px;
       }
     }
   }
@@ -429,6 +477,10 @@ main {
     h2 {
       width: 100%;
     }
+
+    article {
+      flex-basis: 200px;
+    }
   }
 }
 /*FOOTER STYLING */
@@ -439,7 +491,19 @@ main {
   background-color: var(--footer-bgc);
 }
 footer {
-  padding: 1em;
+  padding: 3em 3em 2em;
+  .lg-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 5vw;
+
+    // section {
+    //   min-width: 240px;
+    // }
+    h4 {
+      font-weight: bold;
+    }
+  }
 }
 
 /* MEDIA QUERIES */
