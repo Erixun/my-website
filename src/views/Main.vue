@@ -15,9 +15,9 @@
   <main>
     <section class="main-section presentation">
       <div class="lg-container">
-        <aside class="portrait flx-col flx-just-center">
+        <aside tabindex="0" class="portrait flx-col flx-just-center">
           <div class="shadow-wrapper">
-            <figure>
+            <figure aria-label="Erik Sundberg">
               <div class="portrait-wrapper ib">
                 <picture>
                   <img
@@ -44,14 +44,65 @@
             education...
           </p>
           <p>
-            If you'd like to get in contact with me for any reason you may use
+            If you'd like to get in contact, use
             one of the options below. I'd be happy to hear from you. Feel free
             to look around too.
           </p>
-          <div>[contact-link icons]</div>
         </article>
       </div>
     </section>
+    <div class="separator">
+      <div class="sm-container">
+        <ul class="contact-options flx flx-just-center">
+          <li>
+            <a
+              href="https://discord.gg/PF3MK6vM"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Discord server"
+            >
+              <img
+                src="https://www.svgrepo.com/show/341762/discord.svg"
+                intrinsicsize="512 x 512"
+                srcset="https://www.svgrepo.com/show/341762/discord.svg 4x"
+                alt="Discord SVG Vector"
+                title="Discord server"
+              />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/erik-sundberg-76463787/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Linkedin profile"
+              ><i class="devicon-linkedin-plain" title="Linkedin profile"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.facebook.com/erik.sundberg.9699"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook profile"
+            >
+              <i class="devicon-facebook-plain" title="Facebook profile"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/Erixun"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Github profile"
+            >
+              <i class="icon devicon-github-original" title="Github profile"></i>
+            </a>
+          </li>
+          <!-- <li><i class="devicon-twitter-original"></i></li> -->
+        </ul>
+      </div>
+    </div>
     <section class="main-section powers stand-out">
       <div class="lg-container">
         <h2>
@@ -167,13 +218,15 @@ export default defineComponent({
   --accented-border: 1px solid #a7453c21;
   --accented-bs: 0px 2px 4px 0px lightgray;
   --alt-section-bgc: #fcfaf0;
+  --base-bgc: #fffcf2;
+  --separate-color: #f9f6e9;
+  --separate-border: 0.2em solid var(--brand-color);
   --section-linear-gradient: linear-gradient(
     to bottom,
     var(--base-bgc),
     95%,
-    #f9f6e9
+    var(--separate-color)
   );
-  --base-bgc: #fffcf2;
   --neutral-text: #474747;
   --footer-bgc: #e8e7dd91;
   --brand-color: #008a00;
@@ -229,9 +282,26 @@ body {
     & > * {
       border-bottom: 1px solid var(--darkmode-border-color);
     }
+    & > header {
+      box-shadow: unset;
+    }
     & > main {
       .main-section:not(.stand-out) {
         background: revert;
+      }
+      .separator {
+        background: var(--darkmode-default-bgc);
+        li {
+          background: var(--darkmode-default-bgc);
+
+          i {
+            color: var(--darkmode-default-text);
+          }
+          img {
+            filter: invert(91%) sepia(3%) saturate(2233%) hue-rotate(177deg)
+              brightness(73%) contrast(87%);
+          }
+        }
       }
       section:nth-child(even):not(.stand-out) {
         background-color: var(--darkmode-alt-section-bgc);
@@ -288,9 +358,6 @@ body {
   ol {
     list-style: none;
     margin: 0.8em 0;
-    li {
-      line-height: 2;
-    }
   }
 }
 
@@ -316,6 +383,12 @@ body {
   }
   .padl-16 {
     padding-left: 1.6em;
+  }
+  .sm-container {
+    width: var(--sm-width);
+    max-width: 80%;
+    padding: 0 2vw;
+    margin: 0 auto;
   }
   .md-container {
     width: 100%;
@@ -370,6 +443,8 @@ body {
 header.primary {
   padding: 0.5em 3vw;
   z-index: 2000;
+  background: inherit;
+  box-shadow: 0 -8px 20px 0 #d3d3d3a3;
   section {
     flex-grow: 1;
   }
@@ -380,11 +455,6 @@ header.primary {
     padding-left: 1vw;
     color: var(--brand-color);
   }
-}
-
-header.primary {
-  background: inherit;
-  box-shadow: 0 -8px 20px 0 #d3d3d3a3;
 }
 
 /* MAIN STYLING */
@@ -398,6 +468,40 @@ header.primary {
   .portrait .shadow-wrapper::after {
     box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow);
   }
+
+  .separator {
+    background: var(--separate-color);
+    padding-bottom: 4em;
+    .contact-options {
+      border-top: var(--separate-border);
+      gap: 2em;
+      height: 1em;
+      li {
+        display: inline-block;
+        margin-top: -1.2em;
+        background: var(--separate-color);
+        border-radius: 50%;
+
+        i {
+          font-size: 2em;
+          color: var(--neutral-text);
+        }
+        img {
+          height: 2.2em;
+          filter: invert(23%) sepia(0%) saturate(2407%) hue-rotate(140deg)
+            brightness(105%) contrast(85%);
+        }
+      }
+      a {
+        display: inherit;
+      }
+      a:hover,
+      a:focus {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 main {
@@ -407,7 +511,7 @@ main {
   z-index: 1000;
   section {
     display: flex;
-    padding: 4em 1em 5em;
+    padding: 4em 1em;
   }
   .presentation > .lg-container {
     justify-content: space-evenly;
@@ -507,7 +611,7 @@ main {
 }
 
 /* ANIMATIONS */
-.portrait:hover {
+.portrait:hover, .portrait:focus {
   figure {
     animation: floating 2s ease-in-out alternate infinite;
   }
@@ -520,7 +624,9 @@ main {
   }
 }
 .app.dark .portrait:hover .shadow-wrapper::after,
-.app:not(.dark) .portrait:hover .shadow-wrapper::after {
+.app.dark .portrait:focus .shadow-wrapper::after,
+.app:not(.dark) .portrait:hover .shadow-wrapper::after,
+.app:not(.dark) .portrait:focus .shadow-wrapper::after {
   --from-box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow);
   --to-box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow-less);
   animation: less-shadow 2s ease-in-out alternate infinite;
