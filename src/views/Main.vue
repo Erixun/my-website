@@ -32,7 +32,7 @@
         </aside>
         <article class="flx-col flx-just-center">
           <header id="welcome-header" class="welcome-header">
-            <h2 class="welcoming ib">Welcome</h2>
+            <h2 class="brand ib">Welcome</h2>
             <h3 class="ib">
               This is the homepage of Erik Sundberg, Swedish Web developer, or
               <em>Swebdev</em>
@@ -174,7 +174,7 @@ export default defineComponent({
   --base-bgc: #fffcf2;
   --neutral-text: #474747;
   --footer-bgc: #e8e7dd91;
-  --welcome-color: #008a00;
+  --brand-color: #008a00;
   --border-color: #848484a3;
   --light-section-bgc: hsl(180, 9.1%, 97.8%);
   --light-border-color: #eaecf3;
@@ -201,6 +201,19 @@ body {
     display: flex;
     flex-direction: column;
     font-size: 0.97em;
+    color: var(--neutral-text);
+    background-color: var(--base-bgc);
+
+    .stand-out {
+      background-color: var(--accented-bgc);
+      color: var(--accented-text-color-b);
+      border-top: var(--accented-border);
+      border-bottom: var(--accented-border);
+      z-index: 3000;
+    }
+    & > * {
+      border-bottom: 1px solid var(--light-border-color);
+    }
 
     [emoji] {
       display: inline-block;
@@ -249,24 +262,6 @@ body {
       border-bottom: var(--darkmode-accented-border);
     }
   }
-  .app {
-    color: unset;
-    background-color: var(--base-bgc);
-    h1 {
-      color: var(--welcome-color);
-    }
-    .stand-out {
-      background-color: var(--accented-bgc);
-      color: var(--accented-text-color-b);
-      border-top: var(--accented-border);
-      border-bottom: var(--accented-border);
-      z-index: 3000;
-    }
-  }
-
-  .app > * {
-    border-bottom: 1px solid var(--light-border-color);
-  }
 
   h1,
   h2,
@@ -275,7 +270,8 @@ body {
     all: unset;
   }
   h2 {
-    font-size: 1.7em;
+    font-weight: bold;
+    font-size: 1.6em;
     padding-bottom: 0.5em;
   }
   h3 {
@@ -348,9 +344,8 @@ body {
   .flx-alit-center {
     align-items: center;
   }
-  .welcoming {
-    color: var(--welcome-color);
-    font-weight: bold;
+  .brand {
+    color: var(--brand-color);
   }
   .shadow-wrapper {
     display: inline-block;
@@ -381,9 +376,7 @@ header.primary {
     font-weight: bold;
     font-style: italic;
     padding-left: 1vw;
-    h1 {
-      text-transform: unset;
-    }
+    color: var(--brand-color);
   }
 }
 
@@ -433,9 +426,6 @@ main {
         width: 100%;
         padding-bottom: 0;
       }
-      h2.welcoming {
-        font-size: 1.6em;
-      }
     }
     aside.portrait {
       flex-basis: 250px;
@@ -454,7 +444,7 @@ main {
       }
       .portrait-wrapper {
         padding: 0.5em;
-        background: var(--welcome-color);
+        background: var(--brand-color);
         border-right: 3px solid darkgreen;
         border-radius: 5px;
       }
