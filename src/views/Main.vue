@@ -194,7 +194,7 @@ body {
   box-sizing: border-box;
   font-size: calc(0.35842vw + 0.95296em);
 
-  #app {
+  .app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -208,7 +208,7 @@ body {
       display: inline-block;
     }
   }
-  #app.dark {
+  .app.dark {
     position: relative;
     color: var(--darkmode-default-text);
     background-color: var(--darkmode-default-bgc);
@@ -231,7 +231,7 @@ body {
       border-bottom: var(--darkmode-accented-border);
     }
   }
-  #app:not(.dark) {
+  .app:not(.dark) {
     color: unset;
     background-color: var(--base-bgc);
     h1 {
@@ -243,14 +243,13 @@ body {
       border-top: var(--accented-border);
       border-bottom: var(--accented-border);
       z-index: 3000;
-      // box-shadow: 0px 2px 10px -5px #80808066;
     }
   }
 
-  #app:not(.dark) > * {
+  .app:not(.dark) > * {
     border-bottom: 1px solid var(--light-border-color);
   }
-  #app.dark > * {
+  .app.dark > * {
     border-bottom: 1px solid var(--darkmode-border-color);
   }
 
@@ -372,14 +371,13 @@ header.primary {
     }
   }
 }
-#app:not(.dark) header.primary {
-  background: inherit; //var(--base-bgc);
+.app:not(.dark) header.primary {
+  background: inherit;
   box-shadow: 0 -8px 20px 0 #d3d3d3a3;
 }
 
 /* MAIN STYLING */
-#app:not(.dark) > main {
-  // box-shadow: 0 -8px 20px 0 lightgrey;
+.app:not(.dark) > main {
   section:not(.stand-out) {
     background: var(--section-linear-gradient);
   }
@@ -392,7 +390,7 @@ header.primary {
     box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow);
   }
 }
-#app.dark > main {
+.app.dark > main {
   section:nth-child(even):not(.stand-out) {
     background-color: var(--darkmode-alt-section-bgc);
   }
@@ -489,10 +487,10 @@ main {
   }
 }
 /*FOOTER STYLING */
-#app.dark > footer {
+.app.dark > footer {
   background-color: var(--darkmode-footer-bgc);
 }
-#app:not(.dark) > footer {
+.app:not(.dark) > footer {
   background-color: var(--footer-bgc);
 }
 footer {
@@ -531,8 +529,8 @@ footer {
     animation: less-shadow 2s ease-in-out alternate infinite;
   }
 }
-#app.dark .portrait:hover .shadow-wrapper::after,
-#app:not(.dark) .portrait:hover .shadow-wrapper::after {
+.app.dark .portrait:hover .shadow-wrapper::after,
+.app:not(.dark) .portrait:hover .shadow-wrapper::after {
   --from-box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow);
   --to-box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow-less);
   animation: less-shadow 2s ease-in-out alternate infinite;
