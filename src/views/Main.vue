@@ -13,7 +13,7 @@
     </div>
   </header>
   <main>
-    <section class="presentation">
+    <section class="main-section presentation">
       <div class="lg-container">
         <aside class="portrait flx-col flx-just-center">
           <div class="shadow-wrapper">
@@ -52,7 +52,7 @@
         </article>
       </div>
     </section>
-    <section class="powers stand-out">
+    <section class="main-section powers stand-out">
       <div class="lg-container">
         <h2>
           My Powers
@@ -66,7 +66,7 @@
         [Show More... ]
       </div>
     </section>
-    <section class="currently">
+    <section class="main-section currently">
       <div class="md-container flx">
         <h2>Currently...</h2>
         <article class="currently-learning ctext">
@@ -159,10 +159,9 @@ export default defineComponent({
   --darkmode-alt-section-bgc: rgb(40, 39, 27);
   --darkmode-border-color: #4d526691;
   --darkmode-footer-bgc: #222117;
-  --darkmode-welcome-color: #009d00;
   --accented-text-color-a: #d33a2c;
   --accented-text-color-b: #a7453c;
-  --accented-bgc: #e7fbff75; //#ffe7e775;
+  --accented-bgc: #e7fbff75;
   --accented-border: 1px solid #a7453c21;
   --accented-bs: 0px 2px 4px 0px lightgray;
   --alt-section-bgc: #fcfaf0;
@@ -174,9 +173,8 @@ export default defineComponent({
   );
   --base-bgc: #fffcf2;
   --neutral-text: #474747;
-  --footer-bgc: #e8e7dd91; // #e8e7dd;
-  --title-color: darkcyan;
-  --welcome-color: #007100;
+  --footer-bgc: #e8e7dd91;
+  --welcome-color: #008a00;
   --border-color: #848484a3;
   --light-section-bgc: hsl(180, 9.1%, 97.8%);
   --light-border-color: #eaecf3;
@@ -184,7 +182,7 @@ export default defineComponent({
   --fade-in-duration: 1.5s;
   --lg-width: 1500px;
   --md-width: 1200px;
-  --s-width: 900px;
+  --sm-width: 900px;
 }
 
 /* GENERAL STYLING */
@@ -212,6 +210,26 @@ body {
     position: relative;
     color: var(--darkmode-default-text);
     background-color: var(--darkmode-default-bgc);
+
+    & > * {
+      border-bottom: 1px solid var(--darkmode-border-color);
+    }
+    & > main {
+      .main-section:not(.stand-out) {
+        background: revert;
+      }
+      section:nth-child(even):not(.stand-out) {
+        background-color: var(--darkmode-alt-section-bgc);
+      }
+      --portrait-shadow: grey;
+      --portrait-shadow-less: rgba(128, 128, 128, 0.507);
+      .portrait .shadow-wrapper::after {
+        box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow);
+      }
+    }
+    & > footer {
+      background-color: var(--darkmode-footer-bgc);
+    }
     .darkness {
       position: absolute;
       width: 100%;
@@ -231,11 +249,11 @@ body {
       border-bottom: var(--darkmode-accented-border);
     }
   }
-  .app:not(.dark) {
+  .app {
     color: unset;
     background-color: var(--base-bgc);
     h1 {
-      color: var(--title-color);
+      color: var(--welcome-color);
     }
     .stand-out {
       background-color: var(--accented-bgc);
@@ -246,11 +264,8 @@ body {
     }
   }
 
-  .app:not(.dark) > * {
+  .app > * {
     border-bottom: 1px solid var(--light-border-color);
-  }
-  .app.dark > * {
-    border-bottom: 1px solid var(--darkmode-border-color);
   }
 
   h1,
@@ -371,34 +386,20 @@ header.primary {
     }
   }
 }
-.app:not(.dark) header.primary {
+
+header.primary {
   background: inherit;
   box-shadow: 0 -8px 20px 0 #d3d3d3a3;
 }
 
 /* MAIN STYLING */
-.app:not(.dark) > main {
+.app > main {
   section:not(.stand-out) {
     background: var(--section-linear-gradient);
   }
-  section:nth-child(even):not(.stand-out) {
-    background-color: var(--alt-section-bgc);
-  }
+  
   --portrait-shadow: rgba(0, 0, 0, 0.3);
   --portrait-shadow-less: rgba(0, 0, 0, 0.15);
-  .portrait .shadow-wrapper::after {
-    box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow);
-  }
-}
-.app.dark > main {
-  section:nth-child(even):not(.stand-out) {
-    background-color: var(--darkmode-alt-section-bgc);
-  }
-  .welcoming {
-    filter: brightness(1.5);
-  }
-  --portrait-shadow: grey;
-  --portrait-shadow-less: rgba(128, 128, 128, 0.507);
   .portrait .shadow-wrapper::after {
     box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow);
   }
@@ -486,23 +487,15 @@ main {
     }
   }
 }
+
 /*FOOTER STYLING */
-.app.dark > footer {
-  background-color: var(--darkmode-footer-bgc);
-}
-.app:not(.dark) > footer {
+.app > footer {
   background-color: var(--footer-bgc);
-}
-footer {
   padding: 3em 3em 2em;
   .lg-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 5vw;
-
-    // section {
-    //   min-width: 240px;
-    // }
     h4 {
       font-weight: bold;
     }
