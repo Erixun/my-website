@@ -397,7 +397,7 @@ header.primary {
   section:not(.stand-out) {
     background: var(--section-linear-gradient);
   }
-  
+
   --portrait-shadow: rgba(0, 0, 0, 0.3);
   --portrait-shadow-less: rgba(0, 0, 0, 0.15);
   .portrait .shadow-wrapper::after {
@@ -559,19 +559,6 @@ h2:hover [emoji].flexes {
   }
 }
 
-.currently-workingon:hover [emoji].rotates {
-  animation: emoji-rotate 1.5s linear 3;
-}
-
-@keyframes emoji-rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(359deg);
-  }
-}
-
 .flipped {
   transform: rotateY(180deg);
 }
@@ -631,6 +618,19 @@ h2:hover [emoji].flexes {
   }
   to {
     transform: translateY(-200%) var(--flipped) scaleY(1);
+  }
+}
+
+.currently-workingon:hover [emoji].rotates {
+  animation: emoji-rotate 1.5s linear 3;
+}
+
+@keyframes emoji-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
   }
 }
 </style>
