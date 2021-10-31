@@ -72,7 +72,9 @@
         <article class="currently-learning ctext">
           <h3>
             <div class="shadow-wrapper">
-              <span class="flipped studies" emoji title="monocle_face">🧐</span>
+              <span class="flipped studious" emoji title="monocle_face"
+                >🧐</span
+              >
             </div>
             Learning
           </h3>
@@ -475,6 +477,11 @@ main {
     article {
       flex-basis: 200px;
     }
+
+    [emoji].studious {
+      z-index: 1;
+      position: relative;
+    }
   }
 }
 
@@ -558,7 +565,7 @@ h2:hover [emoji].flexes {
   $halftime: $airtime + $squashtime;
   $fulltime: 2 * $halftime;
   $gravity: cubic-bezier(0.165, 0.84, 0.44, 1);
-  .studies:not(.emoji-fade-in) {
+  .studious {
     --flipped: rotateY(180deg);
     animation: $squashtime emoji-squash 0s ease-in normal,
       $airtime emoji-jump $squashtime $gravity normal,
