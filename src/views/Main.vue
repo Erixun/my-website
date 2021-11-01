@@ -2,7 +2,7 @@
   <!-- MOBILE FIRST -->
   <header class="primary">
     <div class="lg-container flx">
-      <section class="logo ltext">
+      <section class="logo ltext flx">
         <h1>erixun.me</h1>
         <TheLightBulb />
       </section>
@@ -484,8 +484,10 @@ header.primary {
       li {
         display: inline-block;
         margin-top: -1.2em;
-        background: var(--separate-color);
         border-radius: 50%;
+        &:not(:focus-within, :hover) {
+          background: var(--separate-color);
+        }
 
         i {
           font-size: 2em;
@@ -502,8 +504,17 @@ header.primary {
       }
       a:hover,
       a:focus {
-        transform: scale(1.1);
+        transform: scale(1.15);
         cursor: pointer;
+      }
+      a:active {
+        filter: contrast(1.2) saturate(2.2);
+        background: #ce7979;
+        border-radius: 5px;
+      }
+      li:hover,
+      li:focus-within {
+        filter: hue-rotate(180deg);
       }
     }
   }
