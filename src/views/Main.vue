@@ -44,9 +44,8 @@
             education...
           </p>
           <p>
-            If you'd like to get in contact, use
-            one of the options below. I'd be happy to hear from you. Feel free
-            to look around too.
+            If you'd like to get in contact, use one of the options below. I'd
+            be happy to hear from you. Feel free to look around too.
           </p>
         </article>
       </div>
@@ -96,7 +95,10 @@
               rel="noopener noreferrer"
               aria-label="Github profile"
             >
-              <i class="icon devicon-github-original" title="Github profile"></i>
+              <i
+                class="icon devicon-github-original"
+                title="Github profile"
+              ></i>
             </a>
           </li>
           <!-- <li><i class="devicon-twitter-original"></i></li> -->
@@ -338,8 +340,10 @@ body {
   h1,
   h2,
   h3,
+  h4,
   button {
     all: unset;
+    font-family: "Catamaran", sans-serif;
   }
   h2 {
     font-weight: bold;
@@ -352,6 +356,7 @@ body {
 
   p {
     padding: 0.5em 0;
+    font-family: "Merriweather Sans", sans-serif;
   }
 
   ul,
@@ -611,7 +616,8 @@ main {
 }
 
 /* ANIMATIONS */
-.portrait:hover, .portrait:focus {
+.portrait:hover,
+.portrait:focus {
   figure {
     animation: floating 2s ease-in-out alternate infinite;
   }
