@@ -10,12 +10,12 @@ export default defineComponent({
   setup() {
     const applyDarkness = () => {
       const overlay = document.getElementById("overlay");
-      if (overlay && overlay.classList.contains('total-darkness')) {
+      if (overlay && overlay.classList.contains("total-darkness")) {
         overlay.classList.add("fade");
         setTimeout(() => {
           overlay.classList.remove("total-darkness", "fade");
         }, 1500);
-      } else if(!overlay) {
+      } else if (!overlay) {
         console.error("Element with id 'overlay' not found");
       }
     };
@@ -59,7 +59,12 @@ export default defineComponent({
     .main-section:not(.stand-out) {
       background: revert;
     }
-    .separator {
+    --portrait-shadow: grey;
+    --portrait-shadow-less: rgba(128, 128, 128, 0.507);
+    .portrait .shadow-wrapper::after {
+      box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow);
+    }
+    .separator .contact-options {
       li {
         &:hover,
         &:focus-within {
@@ -74,10 +79,16 @@ export default defineComponent({
         }
       }
     }
-    --portrait-shadow: grey;
-    --portrait-shadow-less: rgba(128, 128, 128, 0.507);
-    .portrait .shadow-wrapper::after {
-      box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow);
+    .powers {
+      .skill-card > .content,
+      .skills-btn {
+        box-shadow: none;
+        border-color: var(--lighter-border-color);
+        border-width: 1px;
+      }
+      .skill-card > .back > p {
+        color: var(--neutral-text);
+      }
     }
   }
   .total-darkness {
@@ -90,14 +101,6 @@ export default defineComponent({
   }
   .fade {
     opacity: 0;
-  }
-  .stand-out {
-    .skill-card,
-    .skills-btn {
-      box-shadow: none;
-      border-color: var(--lighter-border-color);
-      border-width: 1px;
-    }
   }
 }
 </style>
