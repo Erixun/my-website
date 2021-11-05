@@ -1,0 +1,177 @@
+[
+  {
+    "id": "html5",
+    "label": "HTML5",
+    "proficiency": "95",
+    "description": ""
+  },
+  {
+    "id": "css3",
+    "label": "CSS3",
+    "proficiency": "85",
+    "description": ""
+  },
+  {
+    "id": "vscode",
+    "label": "VS Code",
+    "proficiency": "85",
+    "description": ""
+  },
+  {
+    "id": "vuejs",
+    "label": "Vue.js",
+    "proficiency": "70",
+    "description": "A progressive JS framework for building user interfaces. Designed to be incrementally adoptable. It combines some excellent ideas from Angular and React into an easy-to-use package."
+  },
+  {
+    "id": "git",
+    "label": "Git",
+    "proficiency": "70",
+    "description": ""
+  },
+  {
+    "id": "sass",
+    "label": "Sass",
+    "proficiency": "70",
+    "description": ""
+  },
+  {
+    "id": "typescript",
+    "label": "TypeScript",
+    "proficiency": "65",
+    "description": "A programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language."
+  },
+  {
+    "id": "javascript",
+    "label": "JavaScript",
+    "proficiency": "65",
+    "description": ""
+  },
+  {
+    "id": "bitbucket",
+    "label": "BitBucket",
+    "proficiency": "65",
+    "description": ""
+  },
+  {
+    "id": "dotnetcore",
+    "label": ".NET Core",
+    "proficiency": "60",
+    "description": "A cross-platform .NET implementation for websites, servers, and console apps on Windows, Linux, and macOS. It supports C# and TypeScript and offers extensive class libraries, common APIs and tools."
+  },
+  {
+    "id": "csharp",
+    "label": "C#",
+    "proficiency": "60",
+    "description": ""
+  },
+  {
+    "id": "github",
+    "label": "GitHub",
+    "proficiency": "60",
+    "description": ""
+  },
+  {
+    "id": "bootstrap",
+    "label": "Bootstrap",
+    "proficiency": "60",
+    "description": ""
+  },
+  {
+    "id": "jira",
+    "label": "Jira",
+    "proficiency": "50",
+    "description": ""
+  },
+  {
+    "id": "visualstudio",
+    "label": "Visual Studio",
+    "proficiency": "50",
+    "description": ""
+  },
+  {
+    "id": "yarn",
+    "label": "yarn",
+    "proficiency": "50",
+    "description": ""
+  },
+  {
+    "id": "azure",
+    "label": "Azure",
+    "proficiency": "40",
+    "description": ""
+  },
+  {
+    "id": "mysql",
+    "label": "MySQL",
+    "proficiency": "40",
+    "description": ""
+  },
+  {
+    "id": "npm",
+    "label": "npm",
+    "logotype": "original-wordmark",
+    "proficiency": "40",
+    "description": ""
+  },
+  {
+    "id": "nodejs",
+    "label": "NodeJS",
+    "proficiency": "35",
+    "description": ""
+  },
+  {
+    "id": "angularjs",
+    "label": "AngularJS",
+    "proficiency": "35",
+    "description": ""
+  },
+  {
+    "id": "r",
+    "label": "R",
+    "proficiency": "25",
+    "description": ""
+  },
+  {
+    "id": "jest",
+    "label": "Jest",
+    "proficiency": "25",
+    "description": ""
+  },
+  {
+    "id": "mocha",
+    "label": "Mocha",
+    "proficiency": "25",
+    "description": ""
+  },
+  {
+    "id": "docker",
+    "label": "Docker",
+    "proficiency": "20",
+    "description": ""
+  },
+  {
+    "id": "ruby",
+    "label": "Ruby",
+    "proficiency": "20",
+    "description": ""
+  },
+  {
+    "id": "react",
+    "label": "React",
+    "proficiency": "10",
+    "description": "An open-source, front end, JS library maintained by Facebook, used for building user interfaces or UI components. It can serve as a base in the development of single-page or mobile applications."
+  },
+  {
+    "id": "bulma",
+    "label": "Bulma",
+    "proficiency": "10",
+    "description": ""
+  },
+  {
+    "id": "kubernetes",
+    "label": "Kubernetes",
+    "proficiency": "10",
+    "description": ""
+  }
+]
