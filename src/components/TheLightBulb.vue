@@ -16,7 +16,7 @@ import { defineComponent, onMounted } from "vue";
 
 export default defineComponent({
   name: "TheLightBulb",
-  emits: ['powerOff'],
+  emits: ["powerOff"],
   setup(_, { emit }) {
     const toggleLightMode = () => {
       switchLightBulb();
@@ -24,13 +24,15 @@ export default defineComponent({
     };
 
     const switchLightBulb = () => {
-      const lb = document.getElementById("light-bulb")!;
+      const lb = document.getElementById("light-bulb");
+      if (!lb) return;
+
       lb.classList.toggle("off");
       lb.blur();
       if (lb.classList.contains("off")) {
         emit("powerOff", true);
       } else {
-        emit("powerOff", false)
+        emit("powerOff", false);
       }
     };
 
@@ -46,7 +48,6 @@ export default defineComponent({
     };
     //determines if the user has a set theme
     const detectColorScheme = () => {
-
       //local storage is used to override OS theme settings
       if (localStorage.getItem(HAS_LIGHTS_OFF) === "true") {
         return true;
@@ -57,7 +58,6 @@ export default defineComponent({
         //OS theme setting detected as dark
         return true;
       }
-
     };
     onMounted(() => {
       const prefersDark = detectColorScheme();
