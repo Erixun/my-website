@@ -16,50 +16,52 @@ import { defineComponent, onMounted } from "vue";
 
 export default defineComponent({
   name: "TheLightBulb",
-  setup() {
+  emits: ["powerOff"],
+  setup(_, { emit }) {
     const toggleLightMode = () => {
       switchLightBulb();
       switchLightMode();
     };
 
-    const applyDarkness = () => {
-      const mask = document.getElementById("mask");
-      if (mask) {
-        mask.classList.add("darkness", "fade");
-        setTimeout(() => {
-          mask.classList.remove("darkness", "fade");
-        }, 1500);
-      } else {
-        console.error("Element with id mask not found")
-      }
-    };
-
     const switchLightBulb = () => {
-      const lb = document.getElementById("light-bulb")!;
+      const lb = document.getElementById("light-bulb");
+      if (!lb) return;
+
       lb.classList.toggle("off");
       lb.blur();
       if (lb.classList.contains("off")) {
-        applyDarkness();
+        emit("powerOff", true);
+      } else {
+        emit("powerOff", false);
       }
     };
 
     const switchLightMode = () => {
-      const app = document.getElementById("app");
-      if (app) {
-        const classList = app.classList;
-        classList.toggle("dark");
-        storeLightMode(classList);
+      const classList = document.body.classList;
+      classList.toggle("dark");
+      storeLightMode(classList);
+    };
+
+    const HAS_LIGHTS_OFF = "hasLightsOff";
+    const storeLightMode = (classList: DOMTokenList) => {
+      localStorage.setItem(HAS_LIGHTS_OFF, `${classList.contains("dark")}`);
+    };
+    //determines if the user has a set theme
+    const detectColorScheme = () => {
+      //local storage is used to override OS theme settings
+      if (localStorage.getItem(HAS_LIGHTS_OFF) === "true") {
+        return true;
+      } else if (!window.matchMedia) {
+        //matchMedia method not supported
+        return false;
+      } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        //OS theme setting detected as dark
+        return true;
       }
     };
-
-    const hasLightsOff = "hasLightsOff";
-    const storeLightMode = (classList: DOMTokenList) => {
-      localStorage.setItem(hasLightsOff, `${classList.contains("dark")}`);
-    };
-
     onMounted(() => {
-      const prefersDark = localStorage.getItem(hasLightsOff);
-      if (prefersDark === "true") {
+      const prefersDark = detectColorScheme();
+      if (prefersDark) {
         toggleLightMode();
       }
     });
@@ -122,19 +124,6 @@ export default defineComponent({
   }
   75% {
     transform: translate(1%, 0%);
-  }
-}
-
-.lb-fade-in {
-  animation: bulb-fade-in var(--fade-in-duration) ease-out;
-}
-
-@keyframes bulb-fade-in {
-  0% {
-    text-shadow: 0 0 0 transparent;
-  }
-  100% {
-    text-shadow: 0 0 10px #fff;
   }
 }
 </style>

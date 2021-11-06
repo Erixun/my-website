@@ -1,5 +1,5 @@
 <template>
-  <MainView/>
+  <MainView />
 </template>
 
 <script lang="ts">

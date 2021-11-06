@@ -1,10 +1,11 @@
 <template>
   <!-- MOBILE FIRST -->
+  <the-darkness :class="goDark && 'total-darkness'"></the-darkness>
   <header class="primary">
     <div class="lg-container flx">
       <section class="logo ltext flx">
         <h1>erixun.me</h1>
-        <TheLightBulb />
+        <TheLightBulb @powerOff="handleDarkness" />
       </section>
       <section class="mid">
         <!-- <nav>nav</nav> -->
@@ -21,7 +22,7 @@
               <div class="portrait-wrapper ib">
                 <picture>
                   <img
-                    src="../../public/img/MySquaredPhoto2.jpg"
+                    src="img/MySquaredPhoto.jpg"
                     alt="Erik Sundberg"
                     srcset=""
                   />
@@ -88,7 +89,7 @@
               <i class="devicon-facebook-plain" title="Facebook profile"></i>
             </a>
           </li>
-          <li>
+          <li class="circle">
             <a
               href="https://github.com/Erixun"
               target="_blank"
@@ -107,16 +108,18 @@
     </div>
     <section class="main-section powers stand-out">
       <div class="lg-container">
-        <h2>
-          My Powers
-          <span class="flexes" emoji title="muscle">💪</span>
-        </h2>
-        <ul>
-          <li>Vue</li>
-          <li>TypeScript</li>
-          <li>ASP.NET</li>
+        <h2>Technical Experience</h2>
+        <ul v-if="skills.length > 0" class="skill-cards">
+          <BaseSkillCard
+            v-for="(skill, index) in skills"
+            :key="skill.id"
+            :data="skill"
+            v-show="index < SKILLS_MINIMUM || showMore"
+          />
         </ul>
-        [Show More... ]
+        <button class="btn-secondary skills-btn" @click="toggleShowState()">
+          {{ showMore ? "Show Less.." : "Show More..." }}
+        </button>
       </div>
     </section>
     <section class="main-section currently">
@@ -133,8 +136,8 @@
           </h3>
           <ul class="padl">
             <li>Azure Functions</li>
-            <li>React</li>
             <li>Clean Code</li>
+            <li>React</li>
           </ul>
         </article>
         <article class="currently-workingon ctext">
@@ -186,36 +189,53 @@
       </section>
     </div>
   </footer>
-  <div id="mask"></div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent, onMounted, reactive } from "vue";
 import TheLightBulb from "@/components/TheLightBulb.vue";
+import TheDarkness from "@/components/TheDarkness.vue";
+import Supplier from "@/data/Supplier";
+import store from "@/data/store";
+import origin from "@/data/constant/origin";
+import BaseSkillCard from "@/components/BaseSkillCard.vue";
 
 export default defineComponent({
   name: "MainView",
-  components: { TheLightBulb },
+  components: { TheLightBulb, TheDarkness, BaseSkillCard },
+  setup() {
+    const lightStatus = reactive({ value: false });
+    const handleDarkness = (noLight: boolean) => {
+      lightStatus.value = noLight;
+    };
+
+    const supplier = new Supplier(store.skills, origin.skills);
+    onMounted(() => {
+      supplier.supply();
+    });
+
+    const showState = reactive({ isMore: false });
+    const toggleShowState = () => {
+      showState.isMore = !showState.isMore;
+    };
+    const SKILLS_MINIMUM = 6;
+
+    return {
+      handleDarkness,
+      goDark: computed(() => lightStatus.value),
+      SKILLS_MINIMUM,
+      toggleShowState,
+      showMore: computed(() => showState.isMore),
+      skills: computed(() => store.skills.content),
+    };
+  },
 });
 </script>
 
 <style lang="scss">
 /* VARIABLES */
 :root {
-  --darkmode-default-bgc: #131516;
-  --darkmode-neutral-text: #d8d4cf;
-  --darkmode-default-text: rgba(174, 194, 211, 0.84);
-  --darkmode-default-text-86: rgba(174, 194, 211, 0.86);
-  --darkmode-selection-background: #004daa;
-  --darkmode-selection-text: #e8e6e3;
-  --darkmode-accented-bgc: #3c0000;
-  --darkmode-accented-text-color: #ffff009e;
-  --darkmode-accented-border: 2px solid #82020299;
-  --darkmode-alt-section-bgc: rgb(40, 39, 27);
-  --darkmode-border-color: #4d526691;
-  --darkmode-footer-bgc: #222117;
-  --accented-text-color-a: #d33a2c;
-  --accented-text-color-b: #a7453c;
+  --accented-text-color: #a7453c;
   --accented-bgc: #e7fbff75;
   --accented-border: 1px solid #a7453c21;
   --accented-bs: 0px 2px 4px 0px lightgray;
@@ -233,10 +253,11 @@ export default defineComponent({
   --footer-bgc: #e8e7dd91;
   --brand-color: #008a00;
   --border-color: #848484a3;
+  --lighter-border-color: #7a82a291;
   --light-section-bgc: hsl(180, 9.1%, 97.8%);
-  --light-border-color: #eaecf3;
-  --neutral-main-bgc: #ffffff;
-  --fade-in-duration: 1.5s;
+  --default-border-color: #eaecf3;
+  --btn-s-color: #646464;
+  --fade-in-duration: 1.3s;
   --lg-width: 1500px;
   --md-width: 1200px;
   --sm-width: 900px;
@@ -246,7 +267,7 @@ export default defineComponent({
 body {
   margin: 0;
   min-height: 100vh;
-  box-sizing: border-box;
+  box-sizing: content-box;
   font-size: calc(0.35842vw + 0.95296em);
 
   .app {
@@ -260,80 +281,21 @@ body {
     font-size: 0.97em;
     color: var(--neutral-text);
     background-color: var(--base-bgc);
+    position: relative;
 
     .stand-out {
       background-color: var(--accented-bgc);
-      color: var(--accented-text-color-b);
+      color: var(--accented-text-color);
       border-top: var(--accented-border);
       border-bottom: var(--accented-border);
       z-index: 3000;
     }
-    & > * {
-      border-bottom: 1px solid var(--light-border-color);
+    & > *:not(#overlay) {
+      border-bottom: 1px solid var(--default-border-color);
     }
 
     [emoji] {
       display: inline-block;
-    }
-  }
-  .app.dark {
-    position: relative;
-    color: var(--darkmode-default-text);
-    background-color: var(--darkmode-default-bgc);
-
-    & > * {
-      border-bottom: 1px solid var(--darkmode-border-color);
-    }
-    & > header {
-      box-shadow: unset;
-    }
-    & > main {
-      .main-section:not(.stand-out) {
-        background: revert;
-      }
-      .separator {
-        background: var(--darkmode-default-bgc);
-        li {
-          background: var(--darkmode-default-bgc);
-
-          i {
-            color: var(--darkmode-default-text);
-          }
-          img {
-            filter: invert(91%) sepia(3%) saturate(2233%) hue-rotate(177deg)
-              brightness(73%) contrast(87%);
-          }
-        }
-      }
-      section:nth-child(even):not(.stand-out) {
-        background-color: var(--darkmode-alt-section-bgc);
-      }
-      --portrait-shadow: grey;
-      --portrait-shadow-less: rgba(128, 128, 128, 0.507);
-      .portrait .shadow-wrapper::after {
-        box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow);
-      }
-    }
-    & > footer {
-      background-color: var(--darkmode-footer-bgc);
-    }
-    .darkness {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: black;
-      z-index: 3000;
-      opacity: 1;
-      transition: opacity var(--fade-in-duration) linear;
-    }
-    .fade {
-      opacity: 0;
-    }
-    .stand-out {
-      background-color: var(--darkmode-accented-bgc);
-      color: var(--darkmode-accented-text-color);
-      border-top: var(--darkmode-accented-border);
-      border-bottom: var(--darkmode-accented-border);
     }
   }
 
@@ -343,6 +305,7 @@ body {
   h4,
   button {
     all: unset;
+    display: inline-block;
     font-family: "Catamaran", sans-serif;
   }
   h2 {
@@ -352,6 +315,16 @@ body {
   }
   h3 {
     font-size: 1.3em;
+  }
+
+  .btn-secondary {
+    background: linear-gradient(120deg, #e6efff, #cbdeff);
+    padding: 0.3em 1em;
+    color: var(--btn-s-color);
+    border-radius: 5px;
+    margin-top: 2em;
+    cursor: pointer;
+    font-size: 0.9;
   }
 
   p {
@@ -390,20 +363,17 @@ body {
     padding-left: 1.6em;
   }
   .sm-container {
-    width: var(--sm-width);
-    max-width: 80%;
+    width: clamp(100px, 100%, var(--sm-width));
     padding: 0 2vw;
     margin: 0 auto;
   }
   .md-container {
-    width: 100%;
-    max-width: var(--md-width);
+    width: clamp(200px, 100%, var(--md-width));
     padding: 0 2vw;
     margin: 0 auto;
   }
   .lg-container {
-    width: 100%;
-    max-width: var(--lg-width);
+    width: clamp(300px, 100%, var(--lg-width));
     padding: 0 2vw;
     margin: 0 auto;
   }
@@ -464,7 +434,7 @@ header.primary {
 
 /* MAIN STYLING */
 .app > main {
-  section:not(.stand-out) {
+  & > section:not(.stand-out) {
     background: var(--section-linear-gradient);
   }
 
@@ -484,9 +454,12 @@ header.primary {
       li {
         display: inline-block;
         margin-top: -1.2em;
-        border-radius: 50%;
+        border-radius: 10%;
         &:not(:focus-within, :hover) {
-          background: var(--separate-color);
+          background: var(--base-bgc);
+        }
+        &.circle {
+          border-radius: 50%;
         }
 
         i {
@@ -501,26 +474,29 @@ header.primary {
       }
       a {
         display: inherit;
-      }
-      a:hover,
-      a:focus {
-        transform: scale(1.15);
-        cursor: pointer;
-      }
-      a:active {
-        filter: contrast(1.2) saturate(2.2);
-        background: #ce7979;
-        border-radius: 5px;
+        border-bottom: 2px solid var(--alt-section-bgc);
+
+        &:visited {
+          border-bottom-color: var(--brand-color);
+        }
+        &:hover,
+        &:focus {
+          transform: scale(1.05);
+          cursor: pointer;
+        }
+        &:active {
+          filter: brightness(0);
+        }
       }
       li:hover,
       li:focus-within {
-        filter: hue-rotate(180deg);
+        background: white;
       }
     }
   }
 }
 
-main {
+.app > main {
   flex-grow: 8;
   display: flex;
   flex-direction: column;
@@ -575,6 +551,7 @@ main {
         width: 14vw;
         min-width: 110px;
         border-radius: 2px;
+        color: whitesmoke;
       }
     }
   }
@@ -582,6 +559,29 @@ main {
     flex-direction: column;
     justify-content: center;
     font-weight: bold;
+
+    h2 {
+      padding-bottom: 1em;
+    }
+    .skill-cards {
+      display: grid;
+      gap: 2em;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 350px));
+      justify-content: center;
+    }
+
+    .skills-btn {
+      border: var(--accented-border);
+      background: var(--alt-section-bgc);
+      box-shadow: 1px 1px 1px 1px #80808082;
+    }
+    .skills-btn:hover,
+    .skills-btn:focus {
+      color: inherit;
+    }
+    .skills-btn:active {
+      outline: 1px solid var(--brand-color);
+    }
   }
 
   .currently > .md-container {
@@ -627,6 +627,23 @@ main {
 }
 
 /* ANIMATIONS */
+.flip {
+  animation: flip 1s linear;
+}
+
+@keyframes flip {
+  0%,
+  100% {
+    transform: translateZ(0) rotateY(0);
+  }
+  49.99% {
+    transform: translateZ(300px) rotateY(-90deg);
+  }
+  50% {
+    transform: translateZ(300px) rotateY(90deg);
+  }
+}
+
 .portrait:hover,
 .portrait:focus {
   figure {
@@ -640,10 +657,9 @@ main {
     animation: less-shadow 2s ease-in-out alternate infinite;
   }
 }
-.app.dark .portrait:hover .shadow-wrapper::after,
-.app.dark .portrait:focus .shadow-wrapper::after,
-.app:not(.dark) .portrait:hover .shadow-wrapper::after,
-.app:not(.dark) .portrait:focus .shadow-wrapper::after {
+
+.portrait:hover > .shadow-wrapper::after,
+.portrait:focus > .shadow-wrapper::after {
   --from-box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow);
   --to-box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow-less);
   animation: less-shadow 2s ease-in-out alternate infinite;
