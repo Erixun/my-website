@@ -109,113 +109,17 @@
     <section class="main-section powers stand-out">
       <div class="lg-container">
         <h2>Technical Experience</h2>
-        <ul class="skill-cards">
-          <li>
-            <article class="skill-card" id="vuejs">
-              <button class="flip-btn" @click="flipCard('vuejs')">
-                <img
-                  class="flip-indicator"
-                  src="img/icons/flip.svg"
-                  alt="Flip-indicator"
-                />
-              </button>
-              <div class="content back" v-if="isFlipped">
-                <h3>Vue.js</h3>
-                <p>
-                  A progressive JS framework for building user interfaces.
-                  Designed to be incrementally adoptable. It combines some
-                  excellent ideas from Angular and React into an easy-to-use
-                  package.
-                </p>
-              </div>
-              <div class="content front" v-else>
-                <i class="devicon devicon-vuejs-plain"></i>
-                <h3>Vue.js</h3>
-                <meter
-                  min="0"
-                  low="25"
-                  high="60"
-                  optimum="70"
-                  max="100"
-                  value="70"
-                  title="Proficiency: 70%"
-                >
-                  Proficiency: 70%
-                </meter>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article class="skill-card" id="typescript">
-              <button class="flip-btn" @click="flipCard('typescript')">
-                <img
-                  class="flip-indicator"
-                  src="img/icons/flip.svg"
-                  alt="Flip-indicator"
-                />
-              </button>
-              <div class="back content" v-if="isFlipped">
-                <h3>TypeScript</h3>
-                <p>
-                  A programming language developed and maintained by Microsoft.
-                  It is a strict syntactical superset of JavaScript and adds
-                  optional static typing to the language.
-                </p>
-              </div>
-              <div class="front content" v-else>
-                <i class="devicon devicon-typescript-plain"></i>
-                <h3>TypeScript</h3>
-                <meter
-                  min="0"
-                  low="25"
-                  high="60"
-                  optimum="70"
-                  max="100"
-                  value="65"
-                  title="Proficiency: 65%"
-                >
-                  Proficiency: 65%
-                </meter>
-              </div>
-            </article>
-          </li>
-          <li>
-            <article class="skill-card" id="dotnetcore">
-              <button class="flip-btn" @click="flipCard('dotnetcore')">
-                <img
-                  class="flip-indicator"
-                  src="img/icons/flip.svg"
-                  alt="Flip-indicator"
-                />
-              </button>
-              <div class="content back" v-if="isFlipped">
-                <h3>.NET Core</h3>
-                <p>
-                  A cross-platform .NET implementation for websites, servers,
-                  and console apps on Windows, Linux, and macOS. It supports C#
-                  and TypeScript and offers extensive class libraries, common
-                  APIs and tools.
-                </p>
-              </div>
-              <div class="content front" v-else>
-                <i class="devicon devicon-dotnetcore-plain"></i>
-                <h3>.NET Core</h3>
-                <meter
-                  min="0"
-                  low="25"
-                  high="60"
-                  optimum="70"
-                  max="100"
-                  value="60"
-                  title="Proficiency: 60%"
-                >
-                  Proficiency: 60%
-                </meter>
-              </div>
-            </article>
-          </li>
+        <ul v-if="skills.length > 0" class="skill-cards">
+          <BaseSkillCard
+            v-for="(skill, index) in skills"
+            :key="skill.id"
+            :data="skill"
+            v-show="index < SKILLS_MINIMUM || showMore"
+          />
         </ul>
-        <button class="btn-secondary skills-btn">Show More...</button>
+        <button class="btn-secondary skills-btn" @click="toggleShowState()">
+          {{ showMore ? "Show Less.." : "Show More..." }}
+        </button>
       </div>
     </section>
     <section class="main-section currently">
@@ -288,38 +192,41 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive } from "vue";
+import { computed, defineComponent, onMounted, reactive } from "vue";
 import TheLightBulb from "@/components/TheLightBulb.vue";
 import TheDarkness from "@/components/TheDarkness.vue";
+import Supplier from "@/data/Supplier";
+import store from "@/data/store";
+import origin from "@/data/constant/origin";
+import BaseSkillCard from "@/components/BaseSkillCard.vue";
 
 export default defineComponent({
   name: "MainView",
-  components: { TheLightBulb, TheDarkness },
+  components: { TheLightBulb, TheDarkness, BaseSkillCard },
   setup() {
     const lightStatus = reactive({ value: false });
     const handleDarkness = (noLight: boolean) => {
       lightStatus.value = noLight;
     };
 
-    const flipStatus = reactive({ value: false });
-    const flipCard = (id: string) => {
-      const card = document.getElementById(id);
-      if (card) {
-        card.classList.toggle("flip");
-        setTimeout(() => {
-          flipStatus.value = !flipStatus.value;
-        }, 500);
-        setTimeout(() => {
-          card.classList.toggle("flip");
-        }, 1000);
-      }
+    const supplier = new Supplier(store.skills, origin.skills);
+    onMounted(() => {
+      supplier.supply();
+    });
+
+    const showState = reactive({ isMore: false });
+    const toggleShowState = () => {
+      showState.isMore = !showState.isMore;
     };
+    const SKILLS_MINIMUM = 6;
 
     return {
       handleDarkness,
       goDark: computed(() => lightStatus.value),
-      flipCard,
-      isFlipped: computed(() => flipStatus.value),
+      SKILLS_MINIMUM,
+      toggleShowState,
+      showMore: computed(() => showState.isMore),
+      skills: computed(() => store.skills.content),
     };
   },
 });
@@ -662,81 +569,7 @@ header.primary {
       grid-template-columns: repeat(auto-fit, minmax(200px, 350px));
       justify-content: center;
     }
-    li {
-      perspective: 1200px;
-    }
 
-    .skill-card > .content {
-      height: 120px;
-      padding: 1em;
-      border-radius: 5px;
-      background: var(--alt-section-bgc);
-      border: var(--accented-border);
-      text-align: left;
-      box-shadow: 1px 1px 1px 1px #80808082;
-    }
-    .skill-card > .back {
-      font-size: 0.7em;
-      p {
-        padding-top: 0;
-        font-size: 12px;
-        color: black;
-        font-weight: normal;
-      }
-    }
-    .skill-card > .front {
-      place-items: center start;
-      position: relative;
-      text-align: left;
-      display: grid;
-      padding: 1em;
-      border-radius: 5px;
-      background: var(--alt-section-bgc);
-      border: var(--accented-border);
-      grid-template-columns: max-content 1fr 1fr;
-      grid-template-rows: auto;
-      grid-template-areas:
-        "logo h3 h3"
-        "logo meter meter";
-    }
-    .devicon {
-      grid-area: logo;
-      font-size: 4em;
-      margin-right: 1rem;
-    }
-    h3 {
-      grid-area: h3;
-      width: 100%;
-      align-self: end;
-    }
-    meter {
-      grid-area: meter;
-      height: 0.4em;
-      margin-right: 1em;
-      width: 100%;
-      border-radius: 10px;
-      box-sizing: border-box;
-      position: relative;
-    }
-    meter::-moz-meter-bar {
-      border-radius: 10px 0 0 10px;
-    }
-    .flip-btn {
-      position: absolute;
-      right: 0px;
-      top: 0px;
-      padding: 5px 5px 18px 10px;
-      box-sizing: content-box;
-      cursor: pointer;
-      border-radius: 0 5px;
-      z-index: 7574;
-    }
-    .flip-btn:hover {
-      background: lightgrey;
-    }
-    .flip-indicator {
-      width: 0.8em;
-    }
     .skills-btn {
       border: var(--accented-border);
       background: var(--alt-section-bgc);
