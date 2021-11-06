@@ -77,19 +77,28 @@ li {
 }
 
 .skill-card > .content {
-  height: 120px;
+  height: 130px;
   padding: 1em;
   border-radius: 5px;
   background: var(--alt-section-bgc);
   border: var(--accented-border);
   text-align: left;
   box-shadow: 1px 1px 1px 1px #80808082;
+
+  h3 {
+    white-space: nowrap;
+    align-self: end;
+  }
 }
 .skill-card > .back {
   font-size: 0.7em;
   letter-spacing: 0.3px;
+  padding: 0.7em 1em;
+  h3 {
+    font-size: clamp(12px, 2em, 16px);
+  }
   p {
-    padding-top: 0;
+    padding: 0.5em 0;
     font-size: 12px;
     color: black;
     font-weight: normal;
@@ -112,7 +121,7 @@ li {
 }
 .devicon {
   grid-area: logo;
-  font-size: 4em;
+  font-size: 85px;
   margin-right: 1rem;
 }
 h3 {
@@ -122,9 +131,9 @@ h3 {
 }
 meter {
   grid-area: meter;
-  height: 0.4em;
+  height: 0.5rem;
   margin-right: 1em;
-  width: 100%;
+  width: 95%;
   border-radius: 10px;
   box-sizing: border-box;
   position: relative;
