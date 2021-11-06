@@ -1,0 +1,177 @@
+[
+  {
+    "id": "html5",
+    "label": "HTML5",
+    "proficiency": "95",
+    "description": "HTML5 is a markup language used for structuring and presenting content on the Web. It is the fifth and last major HTML version that is a World Wide Web Consortium recommendation."
+  },
+  {
+    "id": "css3",
+    "label": "CSS3",
+    "proficiency": "85",
+    "description": "Cascading Style Sheets (CSS) is a language that is used to illustrate the look, style, and format of a document written in any markup language. CSS3 is the latest version of an earlier CSS version, CSS2."
+  },
+  {
+    "id": "vscode",
+    "label": "VS Code",
+    "proficiency": "85",
+    "description": "Visual Studio Code is a code editor made by Microsoft. Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git."
+  },
+  {
+    "id": "vuejs",
+    "label": "Vue.js",
+    "proficiency": "70",
+    "description": "A progressive JS framework for building user interfaces. Designed to be incrementally adoptable. It combines some excellent ideas from Angular and React into an easy-to-use package."
+  },
+  {
+    "id": "git",
+    "label": "Git",
+    "proficiency": "70",
+    "description": "Git is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development."
+  },
+  {
+    "id": "sass",
+    "label": "Sass",
+    "proficiency": "70",
+    "description": "Sass is a preprocessor scripting language that is interpreted or compiled into CSS. It consists of 'the indented syntax' similar to Haml and the newer syntax 'SCSS' (Sassy CSS) with block formatting."
+  },
+  {
+    "id": "typescript",
+    "label": "TypeScript",
+    "proficiency": "65",
+    "description": "A programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language."
+  },
+  {
+    "id": "javascript",
+    "label": "JavaScript",
+    "proficiency": "65",
+    "description": "A programming language that conforms to ECMAScript and one of the core web-technologies. It is high-level, JIT-compiled with dynamic typing and first-class functions."
+  },
+  {
+    "id": "bitbucket",
+    "label": "Bitbucket",
+    "proficiency": "65",
+    "description": "Bitbucket is a Git-based source code repository hosting service owned by Atlassian. It offers both commercial plans and free accounts with an unlimited number of private repositories."
+  },
+  {
+    "id": "dotnetcore",
+    "label": ".NET Core",
+    "proficiency": "60",
+    "description": "A cross-platform .NET implementation for websites, servers, and console apps. It supports C# and TypeScript and offers extensive class libraries, common APIs and tools."
+  },
+  {
+    "id": "csharp",
+    "label": "C#",
+    "proficiency": "60",
+    "description": "A programming language developed by Microsoft that runs on the .NET Framework, used to develop games, web, desktop, mobile apps and more. One of the top 5 languages used by projects on GitHub."
+  },
+  {
+    "id": "github",
+    "label": "GitHub",
+    "proficiency": "60",
+    "description": "A provider of Internet hosting for software development that offers the distributed version control and source code management functionality of Git, plus its own features."
+  },
+  {
+    "id": "bootstrap",
+    "label": "Bootstrap",
+    "proficiency": "60",
+    "description": ""
+  },
+  {
+    "id": "jira",
+    "label": "Jira",
+    "proficiency": "50",
+    "description": ""
+  },
+  {
+    "id": "visualstudio",
+    "label": "Visual Studio",
+    "proficiency": "50",
+    "description": ""
+  },
+  {
+    "id": "yarn",
+    "label": "yarn",
+    "proficiency": "50",
+    "description": ""
+  },
+  {
+    "id": "azure",
+    "label": "Azure",
+    "proficiency": "40",
+    "description": ""
+  },
+  {
+    "id": "mysql",
+    "label": "MySQL",
+    "proficiency": "40",
+    "description": ""
+  },
+  {
+    "id": "npm",
+    "label": "npm",
+    "logotype": "original-wordmark",
+    "proficiency": "40",
+    "description": ""
+  },
+  {
+    "id": "nodejs",
+    "label": "NodeJS",
+    "proficiency": "35",
+    "description": ""
+  },
+  {
+    "id": "angularjs",
+    "label": "AngularJS",
+    "proficiency": "35",
+    "description": ""
+  },
+  {
+    "id": "r",
+    "label": "R",
+    "proficiency": "25",
+    "description": ""
+  },
+  {
+    "id": "jest",
+    "label": "Jest",
+    "proficiency": "25",
+    "description": ""
+  },
+  {
+    "id": "mocha",
+    "label": "Mocha",
+    "proficiency": "25",
+    "description": ""
+  },
+  {
+    "id": "docker",
+    "label": "Docker",
+    "proficiency": "20",
+    "description": ""
+  },
+  {
+    "id": "ruby",
+    "label": "Ruby",
+    "proficiency": "20",
+    "description": ""
+  },
+  {
+    "id": "react",
+    "label": "React",
+    "proficiency": "10",
+    "description": "An open-source, front end, JS library maintained by Facebook, used for building user interfaces or UI components. It can serve as a base in the development of single-page or mobile applications."
+  },
+  {
+    "id": "bulma",
+    "label": "Bulma",
+    "proficiency": "10",
+    "description": ""
+  },
+  {
+    "id": "kubernetes",
+    "label": "Kubernetes",
+    "proficiency": "10",
+    "description": ""
+  }
+]
