@@ -22,7 +22,7 @@
               <div class="portrait-wrapper ib">
                 <picture>
                   <img
-                    src="img/MySquaredPhoto.jpg"
+                    src="img/portrait-180x180.jpg"
                     alt="Erik Sundberg"
                     srcset=""
                   />
