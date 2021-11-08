@@ -72,7 +72,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-li {
+.skill-cards li {
   perspective: 1200px;
 }
 
@@ -84,6 +84,7 @@ li {
   border: var(--accented-border);
   text-align: left;
   box-shadow: 1px 1px 1px 1px #80808082;
+  box-sizing: border-box;
 
   h3 {
     white-space: nowrap;
@@ -102,6 +103,8 @@ li {
     font-size: 12px;
     color: black;
     font-weight: normal;
+    margin-top: 0;
+    line-height: 1.4;
   }
 }
 .skill-card > .front {
@@ -143,6 +146,7 @@ meter::-moz-meter-bar {
 }
 .flip-btn {
   position: absolute;
+  line-height: 0;
   right: 0px;
   top: 0px;
   padding: 5px 5px 18px 10px;

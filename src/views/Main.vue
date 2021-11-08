@@ -267,7 +267,7 @@ export default defineComponent({
 body {
   margin: 0;
   min-height: 100vh;
-  box-sizing: content-box;
+  box-sizing: border-box;
   font-size: calc(0.35842vw + 0.95296em);
 
   .app {
@@ -315,7 +315,21 @@ body {
   }
   h3 {
     font-size: 1.3em;
+    line-height: 1.4;
   }
+    p {
+      margin: 0;
+      line-height: 1.4;
+      padding: 0.5em 0;
+      font-family: "Merriweather Sans", sans-serif;
+    }
+  
+    ul,
+    ol {
+      list-style: none;
+      margin: 0.8em 0;
+      padding: 0;
+    }
 
   .btn-secondary {
     background: linear-gradient(120deg, #e6efff, #cbdeff);
@@ -327,16 +341,6 @@ body {
     font-size: 0.9;
   }
 
-  p {
-    padding: 0.5em 0;
-    font-family: "Merriweather Sans", sans-serif;
-  }
-
-  ul,
-  ol {
-    list-style: none;
-    margin: 0.8em 0;
-  }
 }
 
 /* HELPER CLASSES */
@@ -363,7 +367,7 @@ body {
     padding-left: 1.6em;
   }
   .sm-container {
-    width: clamp(100px, 100%, var(--sm-width));
+    width: clamp(100px, 96vw, var(--sm-width));
     padding: 0 2vw;
     margin: 0 auto;
   }
@@ -374,7 +378,6 @@ body {
   }
   .lg-container {
     width: clamp(300px, 100%, var(--lg-width));
-    padding: 0 2vw;
     margin: 0 auto;
   }
   .flx {
@@ -446,13 +449,13 @@ header.primary {
 
   .separator {
     background: var(--separate-color);
-    padding-bottom: 4em;
+    padding: 2vw 0 4em;
     .contact-options {
       border-top: var(--separate-border);
       gap: 2em;
       height: 1em;
       li {
-        display: inline-block;
+        display: flex;
         margin-top: -1.2em;
         border-radius: 10%;
         &:not(:focus-within, :hover) {
@@ -473,7 +476,8 @@ header.primary {
         }
       }
       a {
-        display: inherit;
+        height: 101%;
+        text-decoration: none;
         border-bottom: 2px solid var(--alt-section-bgc);
 
         &:visited {
@@ -533,6 +537,10 @@ header.primary {
       .shadow-wrapper {
         margin: 0 auto;
         transform: rotateY(-10deg);
+
+        figure {
+          margin: 0;
+        }
       }
       .shadow-wrapper::after {
         width: 100%;
@@ -596,6 +604,7 @@ header.primary {
 
     article {
       flex-basis: 200px;
+      line-height: 1.4;
     }
 
     [emoji].studious {
@@ -615,6 +624,10 @@ header.primary {
     gap: 5vw;
     h4 {
       font-weight: bold;
+    }
+    ul {
+      margin-top: 0.5em;
+      line-height: 1.4;
     }
   }
 }
