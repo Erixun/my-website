@@ -122,6 +122,10 @@
         </button>
       </div>
     </section>
+    <section class="hometown window">
+      <h2>Stockholm</h2>
+      <h3>My Hometown</h3>
+    </section>
     <section class="main-section currently">
       <div class="md-container flx">
         <h2>Currently...</h2>
@@ -236,7 +240,7 @@ export default defineComponent({
 /* VARIABLES */
 :root {
   --accented-text-color: #a7453c;
-  --accented-bgc: #e7fbff75;
+  --accented-bgc: #f4fdff;
   --accented-border: 1px solid #a7453c21;
   --accented-bs: 0px 2px 4px 0px lightgray;
   --alt-section-bgc: #fcfaf0;
@@ -250,7 +254,7 @@ export default defineComponent({
     var(--separate-color)
   );
   --neutral-text: #474747;
-  --footer-bgc: #e8e7dd91;
+  --footer-bgc: #f2efe6;
   --brand-color: #008a00;
   --border-color: #848484a3;
   --lighter-border-color: #7a82a291;
@@ -264,6 +268,15 @@ export default defineComponent({
 }
 
 /* GENERAL STYLING */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -282,7 +295,9 @@ body {
     color: var(--neutral-text);
     background-color: var(--base-bgc);
     position: relative;
-
+    & > * {
+      z-index: 1000;
+    }
     .stand-out {
       background-color: var(--accented-bgc);
       color: var(--accented-text-color);
@@ -317,19 +332,19 @@ body {
     font-size: 1.3em;
     line-height: 1.4;
   }
-    p {
-      margin: 0;
-      line-height: 1.4;
-      padding: 0.5em 0;
-      font-family: "Merriweather Sans", sans-serif;
-    }
-  
-    ul,
-    ol {
-      list-style: none;
-      margin: 0.8em 0;
-      padding: 0;
-    }
+  p {
+    margin: 0;
+    line-height: 1.4;
+    padding: 0.5em 0;
+    font-family: "Merriweather Sans", sans-serif;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+    margin: 0.8em 0;
+    padding: 0;
+  }
 
   .btn-secondary {
     background: linear-gradient(120deg, #e6efff, #cbdeff);
@@ -340,7 +355,6 @@ body {
     cursor: pointer;
     font-size: 0.9;
   }
-
 }
 
 /* HELPER CLASSES */
@@ -437,7 +451,18 @@ header.primary {
 
 /* MAIN STYLING */
 .app > main {
-  & > section:not(.stand-out) {
+  flex-grow: 8;
+  display: flex;
+  flex-direction: column;
+  & > * {
+    z-index: 1000;
+  }
+  & > section {
+    display: flex;
+    padding: 4em 1em;
+  }
+
+  & > section:not(.stand-out):not(.window) {
     background: var(--section-linear-gradient);
   }
 
@@ -447,68 +472,6 @@ header.primary {
     box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow);
   }
 
-  .separator {
-    background: var(--separate-color);
-    padding: 2vw 0 4em;
-    .contact-options {
-      border-top: var(--separate-border);
-      gap: 2em;
-      height: 1em;
-      li {
-        display: flex;
-        margin-top: -1.2em;
-        border-radius: 10%;
-        &:not(:focus-within, :hover) {
-          background: var(--base-bgc);
-        }
-        &.circle {
-          border-radius: 50%;
-        }
-
-        i {
-          font-size: 2em;
-          color: var(--neutral-text);
-        }
-        img {
-          height: 2.2em;
-          filter: invert(23%) sepia(0%) saturate(2407%) hue-rotate(140deg)
-            brightness(105%) contrast(85%);
-        }
-      }
-      a {
-        height: 101%;
-        text-decoration: none;
-        border-bottom: 2px solid var(--alt-section-bgc);
-
-        &:visited {
-          border-bottom-color: var(--brand-color);
-        }
-        &:hover,
-        &:focus {
-          transform: scale(1.05);
-          cursor: pointer;
-        }
-        &:active {
-          filter: brightness(0);
-        }
-      }
-      li:hover,
-      li:focus-within {
-        background: white;
-      }
-    }
-  }
-}
-
-.app > main {
-  flex-grow: 8;
-  display: flex;
-  flex-direction: column;
-  z-index: 1000;
-  section {
-    display: flex;
-    padding: 4em 1em;
-  }
   .presentation > .lg-container {
     justify-content: space-evenly;
     display: flex;
@@ -563,6 +526,60 @@ header.primary {
       }
     }
   }
+
+  .separator {
+    background: var(--separate-color);
+    padding: 2vw 0 4em;
+    .contact-options {
+      border-top: var(--separate-border);
+      gap: 2em;
+      height: 1em;
+      li {
+        display: flex;
+        margin-top: -1.2em;
+        border-radius: 10%;
+        &:not(:focus-within, :hover) {
+          background: var(--base-bgc);
+        }
+        &.circle {
+          border-radius: 50%;
+        }
+
+        i {
+          font-size: 2em;
+          color: var(--neutral-text);
+        }
+        img {
+          height: 2.2em;
+          filter: invert(23%) sepia(0%) saturate(2407%) hue-rotate(140deg)
+            brightness(105%) contrast(85%);
+        }
+      }
+      a {
+        height: 101%;
+        text-decoration: none;
+        box-sizing: content-box;
+        border-bottom: 2px solid var(--alt-section-bgc);
+
+        &:visited {
+          border-bottom-color: var(--brand-color);
+        }
+        &:hover,
+        &:focus {
+          transform: scale(1.05);
+          cursor: pointer;
+        }
+        &:active {
+          filter: brightness(0);
+        }
+      }
+      li:hover,
+      li:focus-within {
+        background: white;
+      }
+    }
+  }
+
   .powers {
     flex-direction: column;
     justify-content: center;
@@ -589,6 +606,36 @@ header.primary {
     }
     .skills-btn:active {
       outline: 1px solid var(--brand-color);
+    }
+  }
+
+  .hometown {
+    display: block;
+    position: relative;
+    min-height: 100vh;
+    background-image: url("../assets/hometown-2048x1152.webp");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+
+    h2 {
+      position: fixed;
+      color: var(--brand-color);
+      width: Max(80%, 350px);
+      top: 16%;
+      left: 0;
+      font-size: 3rem;
+      text-shadow: 0px 0px 20px #f1f1f1;
+    }
+    h3 {
+      position: fixed;
+      color: whitesmoke;
+      width: 100%;
+      top: 92%;
+      left: 0;
+      font-size: 2.5rem;
     }
   }
 
