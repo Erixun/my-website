@@ -60,6 +60,7 @@ export default defineComponent({
   & > header {
     border-bottom: 1px solid #333743;
     box-shadow: unset;
+    background: inherit;
   }
   & > main {
     .main-section:not(.stand-out) {

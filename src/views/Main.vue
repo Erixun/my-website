@@ -441,7 +441,7 @@ body {
 header.primary {
   padding: 0.5em 3vw;
   z-index: 2000;
-  background: inherit;
+  background: linear-gradient(to right, var(--base-bgc), #f9f4e7);
   box-shadow: 0 -8px 20px 0 #d3d3d3a3;
   section {
     flex-grow: 1;
