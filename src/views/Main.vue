@@ -123,7 +123,13 @@
       </div>
     </section>
     <section class="hometown window">
-      <h2>Stockholm</h2>
+      <!-- <h2>Stockholm</h2> -->
+      <figure>
+        <img
+          src="http://3.bp.blogspot.com/-b5Oa2SgsU8c/U6JQ2JMzrMI/AAAAAAAAgJg/rIVnp45IWps/s1600/Stockholm-logo-2013.png"
+          alt="Stockholm logo"
+        />
+      </figure>
       <h3>My Hometown</h3>
     </section>
     <section class="main-section currently">
@@ -435,7 +441,7 @@ body {
 header.primary {
   padding: 0.5em 3vw;
   z-index: 2000;
-  background: inherit;
+  background: linear-gradient(to right, var(--base-bgc), #f9f4e7);
   box-shadow: 0 -8px 20px 0 #d3d3d3a3;
   section {
     flex-grow: 1;
@@ -529,9 +535,9 @@ header.primary {
 
   .separator {
     background: var(--separate-color);
-    padding: 2vw 0 4em;
+    padding: 2vw 0 6em;
     .contact-options {
-      border-top: var(--separate-border);
+      // border-top: var(--separate-border);
       gap: 2em;
       height: 1em;
       li {
@@ -584,6 +590,7 @@ header.primary {
     flex-direction: column;
     justify-content: center;
     font-weight: bold;
+    padding-bottom: 8em;
 
     h2 {
       padding-bottom: 1em;
@@ -618,7 +625,10 @@ header.primary {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: #707070;
     z-index: 0;
+    border-top: 4px solid var(--brand-color);
+    border-bottom: 2px solid var(--brand-color);
 
     h2 {
       position: fixed;
@@ -628,6 +638,27 @@ header.primary {
       left: 0;
       font-size: 3rem;
       text-shadow: 0px 0px 20px #f1f1f1;
+    }
+    figure {
+      position: fixed;
+      color: var(--brand-color);
+      width: Max(70%, 350px);
+      top: 10%;
+      left: 0;
+      margin: 0;
+
+      img {
+        width: Max(45%, 350px);
+        padding: 0 5vw;
+        filter: drop-shadow(0px 0px 16px white);
+        color: transparent;
+      }
+      img::after {
+        content: 'Stockholm';
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: var(--brand-color);
+      }
     }
     h3 {
       position: fixed;

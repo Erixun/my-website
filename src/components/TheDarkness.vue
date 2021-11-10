@@ -60,6 +60,7 @@ export default defineComponent({
   & > header {
     border-bottom: 1px solid #333743;
     box-shadow: unset;
+    background: inherit;
   }
   & > main {
     .main-section:not(.stand-out) {
@@ -98,12 +99,19 @@ export default defineComponent({
     }
 
     .hometown {
+      border: unset;
       h2 {
         top: 11%;
         width: Max(350px, 60%);
         text-shadow: -1px 1px 8px #1c1b1b;
         left: 0;
         text-align: center;
+      }
+      img {
+        filter: invert(80%);
+      }
+      img::after {
+        color:black;
       }
       h3 {
         top: 85%;
