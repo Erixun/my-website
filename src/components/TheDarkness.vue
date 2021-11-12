@@ -64,7 +64,7 @@ export default defineComponent({
   }
   & > main {
     .main-section:not(.stand-out) {
-      background: var(--base-bgc);
+      background: linear-gradient(black, black 80%, #262626);
     }
     --portrait-shadow: grey;
     --portrait-shadow-less: rgba(128, 128, 128, 0.507);
