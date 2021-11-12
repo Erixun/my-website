@@ -50,7 +50,7 @@
           </p>
         </article>
       </div>
-    <div class="separator">
+      <div class="separator">
         <ul class="contact-options flx flx-just-center">
           <li>
             <a
@@ -123,10 +123,7 @@
     <section class="hometown window">
       <!-- <h2>Stockholm</h2> -->
       <figure>
-        <img
-          src="http://3.bp.blogspot.com/-b5Oa2SgsU8c/U6JQ2JMzrMI/AAAAAAAAgJg/rIVnp45IWps/s1600/Stockholm-logo-2013.png"
-          alt="Stockholm logo"
-        />
+        <img src="../assets/Stockholm-logo-2013.png" alt="Stockholm logo" />
       </figure>
       <h3>My Hometown</h3>
     </section>
@@ -164,10 +161,7 @@
     <section class="main-section quote">
       <div class="md-container flx">
         <aside>
-          <img
-            src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/68206/boy-scout-clipart-md.png"
-            alt="A boy scout blowing a horn"
-          />
+          <img src="../assets/boyscout.png" alt="A boy scout blowing a horn" />
         </aside>
         <article class="quote-article">
           <h2>The Boy Scouts Rule</h2>
@@ -497,7 +491,7 @@ header.primary {
     z-index: 1000;
   }
   & > section {
-    padding: 4rem 1rem 8rem;
+    padding: Min(6rem, 18vw) 1rem Min(8rem, 24vw);
   }
 
   & > section:not(.stand-out):not(.window) {
@@ -723,8 +717,7 @@ header.primary {
 
   .quote {
     text-align: left;
-    padding-bottom: 8rem;
-    
+
     .md-container {
       align-items: center;
       gap: 3rem 4vw;

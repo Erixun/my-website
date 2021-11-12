@@ -1,5 +1,5 @@
 const origin = {
-  skills: "skills.json"
-}
+  skills: "skills.json",
+};
 
 export default origin;

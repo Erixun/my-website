@@ -111,14 +111,14 @@ export default defineComponent({
         filter: invert(80%);
       }
       img::after {
-        color:black;
+        color: black;
       }
       h3 {
         top: 85%;
         width: Max(350px, 65%);
         color: var(--neutral-text);
       }
-      background-image: url('../assets/hometown-night-5120x2880.webp');
+      background-image: url("../assets/hometown-night-5120x2880.webp");
     }
   }
   .total-darkness {
