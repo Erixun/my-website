@@ -50,9 +50,7 @@
           </p>
         </article>
       </div>
-    </section>
-    <div class="separator">
-      <div class="sm-container">
+      <div class="separator">
         <ul class="contact-options flx flx-just-center">
           <li>
             <a
@@ -105,7 +103,7 @@
           <!-- <li><i class="devicon-twitter-original"></i></li> -->
         </ul>
       </div>
-    </div>
+    </section>
     <section class="main-section powers stand-out">
       <div class="lg-container">
         <h2>Technical Experience</h2>
@@ -125,10 +123,7 @@
     <section class="hometown window">
       <!-- <h2>Stockholm</h2> -->
       <figure>
-        <img
-          src="http://3.bp.blogspot.com/-b5Oa2SgsU8c/U6JQ2JMzrMI/AAAAAAAAgJg/rIVnp45IWps/s1600/Stockholm-logo-2013.png"
-          alt="Stockholm logo"
-        />
+        <img src="../assets/Stockholm-logo-2013.png" alt="Stockholm logo" />
       </figure>
       <h3>My Hometown</h3>
     </section>
@@ -160,6 +155,38 @@
             <li>My own website</li>
             <li>An Investment app</li>
           </ul>
+        </article>
+      </div>
+    </section>
+    <section class="main-section quote">
+      <div class="md-container flx">
+        <aside>
+          <img src="../assets/boyscout.png" alt="A boy scout blowing a horn" />
+        </aside>
+        <article class="quote-article">
+          <h2>The Boy Scouts Rule</h2>
+          <figure>
+            <blockquote
+              cite="https://www.cs.dartmouth.edu/~cs50/Reading/97_Things_Every_Programmer_Should_Know.pdf"
+            >
+              <p>
+                THE BOY SCOUTS HAVE A RULE:
+                <q>Always leave the campground cleaner than you found it. </q>
+                <br />If you find a mess on the ground, you clean it up
+                regardless of who might have made it. You intentionally improve
+                the environment for the next group of campers. (Actually, the
+                original form of that rule, written by Robert Stephenson Smyth
+                Baden-Powell, the father of scouting, was
+                <q>
+                  Try and leave this world a little better than you found it. </q
+                >)
+              </p>
+            </blockquote>
+            <figcaption>
+              – Robert C. Martin, author of <cite>Clean Code</cite>, in
+              <cite>97 Things Every Programmer Should Know</cite>
+            </figcaption>
+          </figure>
         </article>
       </div>
     </section>
@@ -464,8 +491,7 @@ header.primary {
     z-index: 1000;
   }
   & > section {
-    display: flex;
-    padding: 4em 1em;
+    padding: Min(6rem, 18vw) 1rem Min(8rem, 24vw);
   }
 
   & > section:not(.stand-out):not(.window) {
@@ -534,12 +560,10 @@ header.primary {
   }
 
   .separator {
-    background: var(--separate-color);
-    padding: 2vw 0 6em;
+    padding-top: calc(5rem + 3vw);
     .contact-options {
-      // border-top: var(--separate-border);
-      gap: 2em;
-      height: 1em;
+      gap: 3rem;
+      height: 1.2rem;
       li {
         display: flex;
         margin-top: -1.2em;
@@ -654,7 +678,7 @@ header.primary {
         color: transparent;
       }
       img::after {
-        content: 'Stockholm';
+        content: "Stockholm";
         font-size: 3.5rem;
         font-weight: bold;
         color: var(--brand-color);
@@ -688,6 +712,36 @@ header.primary {
     [emoji].studious {
       z-index: 1;
       position: relative;
+    }
+  }
+
+  .quote {
+    text-align: left;
+
+    .md-container {
+      align-items: center;
+      gap: 3rem 4vw;
+      flex-wrap: wrap-reverse;
+    }
+
+    aside {
+      flex-basis: 20%;
+
+      img {
+        width: 100%;
+        min-width: 150px;
+      }
+    }
+
+    figure,
+    blockquote {
+      margin: 0;
+    }
+    figure {
+      max-width: 720px;
+    }
+    figcaption {
+      margin-top: 2rem;
     }
   }
 }
