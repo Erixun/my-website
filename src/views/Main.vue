@@ -124,7 +124,6 @@
       </div>
     </section>
     <section class="hometown window">
-      <!-- <h2>Stockholm</h2> -->
       <figure>
         <img src="../assets/Stockholm-logo-2013.png" alt="Stockholm logo" />
       </figure>
@@ -180,9 +179,7 @@
                 the environment for the next group of campers. (Actually, the
                 original form of that rule, written by Robert Stephenson Smyth
                 Baden-Powell, the father of scouting, was
-                <q>
-                  Try and leave this world a little better than you found it. </q
-                >)
+                <q>Try and leave this world a little better than you found it.</q>)
               </p>
             </blockquote>
             <figcaption>

@@ -9,13 +9,16 @@
         />
       </button>
       <div class="content back" v-if="isFlipped">
-        <h3>{{ label }}</h3>
+        <h3>
+          <i :class="`devicon-${id}-${logotype} colored`"></i>
+          <span class="label">{{ label }}</span>
+        </h3>
         <p>
           {{ description }}
         </p>
       </div>
       <div class="content front" v-else>
-        <i :class="`devicon devicon-${id}-${logotype}`"></i>
+        <i :class="`devicon devicon-${id}-${logotype} colored`"></i>
         <h3>{{ label }}</h3>
         <meter
           min="0"
@@ -97,6 +100,9 @@ export default defineComponent({
   padding: 0.7em 1em;
   h3 {
     font-size: clamp(12px, 2em, 16px);
+    .label {
+      padding-left: 5px;
+    }
   }
   p {
     padding: 0.5em 0;
