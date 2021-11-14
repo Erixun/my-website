@@ -106,7 +106,10 @@
     </section>
     <section class="main-section powers stand-out">
       <div class="lg-container">
-        <h2>Technical Experience</h2>
+        <header>
+          <h2>Technical Experience</h2>
+          <h3>(Relative Proficiencies)</h3>
+        </header>
         <ul v-if="skills.length > 0" class="skill-cards">
           <BaseSkillCard
             v-for="(skill, index) in skills"
@@ -616,8 +619,15 @@ header.primary {
     font-weight: bold;
     padding-bottom: 8em;
 
-    h2 {
+    header {
       padding-bottom: 1em;
+      h2 {
+        padding-bottom: 0; //1em;
+        display: block;
+      }
+      h3 {
+        font-size: 1.2rem;
+      }
     }
     .skill-cards {
       display: grid;
