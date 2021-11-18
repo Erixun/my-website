@@ -179,7 +179,9 @@
                 the environment for the next group of campers. (Actually, the
                 original form of that rule, written by Robert Stephenson Smyth
                 Baden-Powell, the father of scouting, was
-                <q>Try and leave this world a little better than you found it.</q>)
+                <q>
+                  Try and leave this world a little better than you found it. </q
+                >)
               </p>
             </blockquote>
             <figcaption>
@@ -727,8 +729,15 @@ header.primary {
 
     .md-container {
       align-items: center;
-      gap: 3rem 4vw;
+      gap: 5rem 4vw;
       flex-wrap: wrap-reverse;
+      justify-content: space-around;
+    }
+    article {
+      flex-grow: 1;
+      @media only screen and (max-width: 1050px) {
+        flex-grow: 0;
+      }
     }
 
     aside {
