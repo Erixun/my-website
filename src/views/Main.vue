@@ -22,7 +22,7 @@
               <div class="portrait-wrapper ib">
                 <picture>
                   <img
-                    src="img/MySquaredPhoto.jpg"
+                    src="img/portrait-180x180.jpg"
                     alt="Erik Sundberg"
                     srcset=""
                   />
@@ -50,9 +50,7 @@
           </p>
         </article>
       </div>
-    </section>
-    <div class="separator">
-      <div class="sm-container">
+      <div class="separator">
         <ul class="contact-options flx flx-just-center">
           <li>
             <a
@@ -105,10 +103,13 @@
           <!-- <li><i class="devicon-twitter-original"></i></li> -->
         </ul>
       </div>
-    </div>
+    </section>
     <section class="main-section powers stand-out">
       <div class="lg-container">
-        <h2>Technical Experience</h2>
+        <header>
+          <h2>Technical Experience</h2>
+          <h3>(Relative Proficiencies)</h3>
+        </header>
         <ul v-if="skills.length > 0" class="skill-cards">
           <BaseSkillCard
             v-for="(skill, index) in skills"
@@ -121,6 +122,12 @@
           {{ showMore ? "Show Less.." : "Show More..." }}
         </button>
       </div>
+    </section>
+    <section class="hometown window">
+      <figure>
+        <img src="../assets/Stockholm-logo-2013.png" alt="Stockholm logo" />
+      </figure>
+      <h3>My Hometown</h3>
     </section>
     <section class="main-section currently">
       <div class="md-container flx">
@@ -150,6 +157,38 @@
             <li>My own website</li>
             <li>An Investment app</li>
           </ul>
+        </article>
+      </div>
+    </section>
+    <section class="main-section quote">
+      <div class="md-container flx">
+        <aside>
+          <img src="../assets/boyscout.png" alt="A boy scout blowing a horn" />
+        </aside>
+        <article class="quote-article">
+          <h2>The Boy Scouts Rule</h2>
+          <figure>
+            <blockquote
+              cite="https://www.cs.dartmouth.edu/~cs50/Reading/97_Things_Every_Programmer_Should_Know.pdf"
+            >
+              <p>
+                THE BOY SCOUTS HAVE A RULE:
+                <q>Always leave the campground cleaner than you found it. </q>
+                <br />If you find a mess on the ground, you clean it up
+                regardless of who might have made it. You intentionally improve
+                the environment for the next group of campers. (Actually, the
+                original form of that rule, written by Robert Stephenson Smyth
+                Baden-Powell, the father of scouting, was
+                <q>
+                  Try and leave this world a little better than you found it. </q
+                >)
+              </p>
+            </blockquote>
+            <figcaption>
+              – Robert C. Martin, author of <cite>Clean Code</cite>, in
+              <cite>97 Things Every Programmer Should Know</cite>
+            </figcaption>
+          </figure>
         </article>
       </div>
     </section>
@@ -236,7 +275,7 @@ export default defineComponent({
 /* VARIABLES */
 :root {
   --accented-text-color: #a7453c;
-  --accented-bgc: #e7fbff75;
+  --accented-bgc: #f4fdff;
   --accented-border: 1px solid #a7453c21;
   --accented-bs: 0px 2px 4px 0px lightgray;
   --alt-section-bgc: #fcfaf0;
@@ -250,7 +289,7 @@ export default defineComponent({
     var(--separate-color)
   );
   --neutral-text: #474747;
-  --footer-bgc: #e8e7dd91;
+  --footer-bgc: #f2efe6;
   --brand-color: #008a00;
   --border-color: #848484a3;
   --lighter-border-color: #7a82a291;
@@ -264,10 +303,19 @@ export default defineComponent({
 }
 
 /* GENERAL STYLING */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
-  box-sizing: content-box;
+  box-sizing: border-box;
   font-size: calc(0.35842vw + 0.95296em);
 
   .app {
@@ -282,7 +330,9 @@ body {
     color: var(--neutral-text);
     background-color: var(--base-bgc);
     position: relative;
-
+    & > * {
+      z-index: 1000;
+    }
     .stand-out {
       background-color: var(--accented-bgc);
       color: var(--accented-text-color);
@@ -315,6 +365,20 @@ body {
   }
   h3 {
     font-size: 1.3em;
+    line-height: 1.4;
+  }
+  p {
+    margin: 0;
+    line-height: 1.4;
+    padding: 0.5em 0;
+    font-family: "Merriweather Sans", sans-serif;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+    margin: 0.8em 0;
+    padding: 0;
   }
 
   .btn-secondary {
@@ -325,17 +389,6 @@ body {
     margin-top: 2em;
     cursor: pointer;
     font-size: 0.9;
-  }
-
-  p {
-    padding: 0.5em 0;
-    font-family: "Merriweather Sans", sans-serif;
-  }
-
-  ul,
-  ol {
-    list-style: none;
-    margin: 0.8em 0;
   }
 }
 
@@ -363,7 +416,7 @@ body {
     padding-left: 1.6em;
   }
   .sm-container {
-    width: clamp(100px, 100%, var(--sm-width));
+    width: clamp(100px, 96vw, var(--sm-width));
     padding: 0 2vw;
     margin: 0 auto;
   }
@@ -374,7 +427,6 @@ body {
   }
   .lg-container {
     width: clamp(300px, 100%, var(--lg-width));
-    padding: 0 2vw;
     margin: 0 auto;
   }
   .flx {
@@ -418,7 +470,7 @@ body {
 header.primary {
   padding: 0.5em 3vw;
   z-index: 2000;
-  background: inherit;
+  background: linear-gradient(to right, var(--base-bgc), #f9f4e7);
   box-shadow: 0 -8px 20px 0 #d3d3d3a3;
   section {
     flex-grow: 1;
@@ -434,7 +486,17 @@ header.primary {
 
 /* MAIN STYLING */
 .app > main {
-  & > section:not(.stand-out) {
+  flex-grow: 8;
+  display: flex;
+  flex-direction: column;
+  & > * {
+    z-index: 1000;
+  }
+  & > section {
+    padding: Min(6rem, 18vw) 1rem Min(8rem, 24vw);
+  }
+
+  & > section:not(.stand-out):not(.window) {
     background: var(--section-linear-gradient);
   }
 
@@ -444,67 +506,6 @@ header.primary {
     box-shadow: -0.5vw 4.5vw 1vw var(--portrait-shadow);
   }
 
-  .separator {
-    background: var(--separate-color);
-    padding-bottom: 4em;
-    .contact-options {
-      border-top: var(--separate-border);
-      gap: 2em;
-      height: 1em;
-      li {
-        display: inline-block;
-        margin-top: -1.2em;
-        border-radius: 10%;
-        &:not(:focus-within, :hover) {
-          background: var(--base-bgc);
-        }
-        &.circle {
-          border-radius: 50%;
-        }
-
-        i {
-          font-size: 2em;
-          color: var(--neutral-text);
-        }
-        img {
-          height: 2.2em;
-          filter: invert(23%) sepia(0%) saturate(2407%) hue-rotate(140deg)
-            brightness(105%) contrast(85%);
-        }
-      }
-      a {
-        display: inherit;
-        border-bottom: 2px solid var(--alt-section-bgc);
-
-        &:visited {
-          border-bottom-color: var(--brand-color);
-        }
-        &:hover,
-        &:focus {
-          transform: scale(1.05);
-          cursor: pointer;
-        }
-        &:active {
-          filter: brightness(0);
-        }
-      }
-      li:hover,
-      li:focus-within {
-        background: white;
-      }
-    }
-  }
-}
-
-.app > main {
-  flex-grow: 8;
-  display: flex;
-  flex-direction: column;
-  z-index: 1000;
-  section {
-    display: flex;
-    padding: 4em 1em;
-  }
   .presentation > .lg-container {
     justify-content: space-evenly;
     display: flex;
@@ -533,6 +534,10 @@ header.primary {
       .shadow-wrapper {
         margin: 0 auto;
         transform: rotateY(-10deg);
+
+        figure {
+          margin: 0;
+        }
       }
       .shadow-wrapper::after {
         width: 100%;
@@ -555,13 +560,73 @@ header.primary {
       }
     }
   }
+
+  .separator {
+    padding-top: calc(5rem + 3vw);
+    .contact-options {
+      gap: 3rem;
+      height: 1.2rem;
+      li {
+        display: flex;
+        margin-top: -1.2em;
+        border-radius: 10%;
+        &:not(:focus-within, :hover) {
+          background: var(--base-bgc);
+        }
+        &.circle {
+          border-radius: 50%;
+        }
+
+        i {
+          font-size: 2em;
+          color: var(--neutral-text);
+        }
+        img {
+          height: 2.2em;
+          filter: invert(23%) sepia(0%) saturate(2407%) hue-rotate(140deg)
+            brightness(105%) contrast(85%);
+        }
+      }
+      a {
+        height: 101%;
+        text-decoration: none;
+        box-sizing: content-box;
+        border-bottom: 2px solid var(--alt-section-bgc);
+
+        &:visited {
+          border-bottom-color: var(--brand-color);
+        }
+        &:hover,
+        &:focus {
+          transform: scale(1.05);
+          cursor: pointer;
+        }
+        &:active {
+          filter: brightness(0);
+        }
+      }
+      li:hover,
+      li:focus-within {
+        background: white;
+      }
+    }
+  }
+
   .powers {
     flex-direction: column;
     justify-content: center;
     font-weight: bold;
+    padding-bottom: 8em;
 
-    h2 {
+    header {
       padding-bottom: 1em;
+      h2 {
+        padding-bottom: 0; //1em;
+        display: block;
+      }
+      h3 {
+        font-size: 1.2rem;
+      }
     }
     .skill-cards {
       display: grid;
@@ -584,6 +649,60 @@ header.primary {
     }
   }
 
+  .hometown {
+    display: block;
+    position: relative;
+    min-height: 100vh;
+    background-image: url("../assets/hometown-2048x1152.webp");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #707070;
+    z-index: 0;
+    border-top: 4px solid var(--brand-color);
+    border-bottom: 2px solid var(--brand-color);
+
+    h2 {
+      position: fixed;
+      color: var(--brand-color);
+      width: Max(80%, 350px);
+      top: 16%;
+      left: 0;
+      font-size: 3rem;
+      text-shadow: 0px 0px 20px #f1f1f1;
+    }
+    figure {
+      position: fixed;
+      color: var(--brand-color);
+      width: Max(70%, 350px);
+      top: 10%;
+      left: 0;
+      margin: 0;
+
+      img {
+        width: Max(45%, 350px);
+        padding: 0 5vw;
+        filter: drop-shadow(0px 0px 16px white);
+        color: transparent;
+      }
+      img::after {
+        content: "Stockholm";
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: var(--brand-color);
+      }
+    }
+    h3 {
+      position: fixed;
+      color: whitesmoke;
+      width: 100%;
+      top: 92%;
+      left: 0;
+      font-size: 2.5rem;
+    }
+  }
+
   .currently > .md-container {
     display: flex;
     flex-wrap: wrap;
@@ -596,11 +715,49 @@ header.primary {
 
     article {
       flex-basis: 200px;
+      line-height: 1.4;
     }
 
     [emoji].studious {
       z-index: 1;
       position: relative;
+    }
+  }
+
+  .quote {
+    text-align: left;
+
+    .md-container {
+      align-items: center;
+      gap: 5rem 4vw;
+      flex-wrap: wrap-reverse;
+      justify-content: space-around;
+    }
+    article {
+      flex-grow: 1;
+      @media only screen and (max-width: 1050px) {
+        flex-grow: 0;
+      }
+    }
+
+    aside {
+      flex-basis: 20%;
+
+      img {
+        width: 100%;
+        min-width: 150px;
+      }
+    }
+
+    figure,
+    blockquote {
+      margin: 0;
+    }
+    figure {
+      max-width: 720px;
+    }
+    figcaption {
+      margin-top: 2rem;
     }
   }
 }
@@ -615,6 +772,10 @@ header.primary {
     gap: 5vw;
     h4 {
       font-weight: bold;
+    }
+    ul {
+      margin-top: 0.5em;
+      line-height: 1.4;
     }
   }
 }

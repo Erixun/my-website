@@ -44,7 +44,6 @@ export default defineComponent({
   --contact-opt-bgc: var(--base-bgc);
   --separate-color: var(--base-bgc);
   --default-border-color: #4d526691;
-  border: none;
 }
 
 #overlay {
@@ -52,12 +51,20 @@ export default defineComponent({
 }
 
 .dark > .app {
+  background: var(--base-bgc);
+
+  & > :not(#overlay):not(header.primary) {
+    border: none;
+  }
+
   & > header {
+    border-bottom: 1px solid #333743;
     box-shadow: unset;
+    background: inherit;
   }
   & > main {
     .main-section:not(.stand-out) {
-      background: revert;
+      background: linear-gradient(black, black 80%, #262626);
     }
     --portrait-shadow: grey;
     --portrait-shadow-less: rgba(128, 128, 128, 0.507);
@@ -89,6 +96,29 @@ export default defineComponent({
       .skill-card > .back > p {
         color: var(--neutral-text);
       }
+    }
+
+    .hometown {
+      border: unset;
+      h2 {
+        top: 11%;
+        width: Max(350px, 60%);
+        text-shadow: -1px 1px 8px #1c1b1b;
+        left: 0;
+        text-align: center;
+      }
+      img {
+        filter: invert(80%);
+      }
+      img::after {
+        color: black;
+      }
+      h3 {
+        top: 85%;
+        width: Max(350px, 65%);
+        color: var(--neutral-text);
+      }
+      background-image: url("../assets/hometown-night-5120x2880.webp");
     }
   }
   .total-darkness {

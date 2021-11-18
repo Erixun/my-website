@@ -9,13 +9,16 @@
         />
       </button>
       <div class="content back" v-if="isFlipped">
-        <h3>{{ label }}</h3>
+        <h3>
+          <i :class="`devicon-${id}-${logotype} colored`"></i>
+          <span class="label">{{ label }}</span>
+        </h3>
         <p>
           {{ description }}
         </p>
       </div>
       <div class="content front" v-else>
-        <i :class="`devicon devicon-${id}-${logotype}`"></i>
+        <i :class="`devicon devicon-${id}-${logotype} colored`"></i>
         <h3>{{ label }}</h3>
         <meter
           min="0"
@@ -72,7 +75,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-li {
+.skill-cards li {
   perspective: 1200px;
 }
 
@@ -84,6 +87,7 @@ li {
   border: var(--accented-border);
   text-align: left;
   box-shadow: 1px 1px 1px 1px #80808082;
+  box-sizing: border-box;
 
   h3 {
     white-space: nowrap;
@@ -96,12 +100,17 @@ li {
   padding: 0.7em 1em;
   h3 {
     font-size: clamp(12px, 2em, 16px);
+    .label {
+      padding-left: 5px;
+    }
   }
   p {
     padding: 0.5em 0;
     font-size: 12px;
     color: black;
     font-weight: normal;
+    margin-top: 0;
+    line-height: 1.4;
   }
 }
 .skill-card > .front {
@@ -143,6 +152,7 @@ meter::-moz-meter-bar {
 }
 .flip-btn {
   position: absolute;
+  line-height: 0;
   right: 0px;
   top: 0px;
   padding: 5px 5px 18px 10px;

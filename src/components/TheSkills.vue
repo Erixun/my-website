@@ -11,15 +11,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "TheSkills",
   props: {
     data: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
     const enum FilterOptions {
@@ -27,9 +27,8 @@ export default defineComponent({
       Language = "language",
       SourceControl = "source-control",
       IDE = "ide",
-      Other = "other"
+      Other = "other",
     }
-    
   },
-})
+});
 </script>
