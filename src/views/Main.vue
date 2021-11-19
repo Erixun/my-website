@@ -655,6 +655,9 @@ header.primary {
     min-height: 100vh;
     background-image: url("../assets/hometown-2048x1152.webp");
     background-attachment: fixed;
+    @media only screen and (max-device-width: 1366px) {
+      background-attachment: scroll;
+    }
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -663,17 +666,11 @@ header.primary {
     border-top: 4px solid var(--brand-color);
     border-bottom: 2px solid var(--brand-color);
 
-    h2 {
-      position: fixed;
-      color: var(--brand-color);
-      width: Max(80%, 350px);
-      top: 16%;
-      left: 0;
-      font-size: 3rem;
-      text-shadow: 0px 0px 20px #f1f1f1;
-    }
     figure {
       position: fixed;
+      @media only screen and (max-device-width: 1366px) {
+        position: absolute;
+      }
       color: var(--brand-color);
       width: Max(70%, 350px);
       top: 10%;
@@ -695,6 +692,9 @@ header.primary {
     }
     h3 {
       position: fixed;
+      @media only screen and (max-device-width: 1366px) {
+        position: absolute;
+      }
       color: whitesmoke;
       width: 100%;
       top: 92%;
