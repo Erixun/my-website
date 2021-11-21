@@ -135,11 +135,11 @@
         <article class="currently-learning ctext">
           <h3>
             <div class="shadow-wrapper">
-              <span class="flipped studious" emoji title="monocle_face"
-                >🧐</span
-              >
+              <span class="flipped studious" emoji title="monocle_face">
+                🧐
+              </span>
             </div>
-            Learning
+            I Am Learning
           </h3>
           <ul class="padl">
             <li>Azure Functions</li>
@@ -149,7 +149,7 @@
         </article>
         <article class="currently-workingon ctext">
           <h3>
-            Working on
+            & Working on
             <span class="rotates" emoji title="hammer_and_wrench">🛠️</span>
           </h3>
           <ul>
@@ -172,15 +172,15 @@
               cite="https://www.cs.dartmouth.edu/~cs50/Reading/97_Things_Every_Programmer_Should_Know.pdf"
             >
               <p>
-                THE BOY SCOUTS HAVE A RULE:
-                <q>Always leave the campground cleaner than you found it. </q>
+                <q>Always leave the campground cleaner than you found it.</q>
                 <br />If you find a mess on the ground, you clean it up
                 regardless of who might have made it. You intentionally improve
                 the environment for the next group of campers. (Actually, the
                 original form of that rule, written by Robert Stephenson Smyth
                 Baden-Powell, the father of scouting, was
-                <q>
-                  Try and leave this world a little better than you found it. </q
+                <q
+                  >Try and leave this world a little better than you found
+                  it.</q
                 >)
               </p>
             </blockquote>
@@ -723,6 +723,9 @@ header.primary {
     [emoji].studious {
       z-index: 1;
       position: relative;
+    }
+    li {
+      margin-bottom: 0.4rem;
     }
   }
 
