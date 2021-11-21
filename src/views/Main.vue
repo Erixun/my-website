@@ -1,9 +1,9 @@
 <template>
   <!-- MOBILE FIRST -->
   <the-darkness :class="goDark && 'total-darkness'"></the-darkness>
-  <header class="primary">
+  <header id="top" class="primary">
     <div class="lg-container flx">
-      <section class="logo ltext flx">
+      <section id="logo" class="logo ltext flx">
         <h1>erixun.me</h1>
         <TheLightBulb @powerOff="handleDarkness" />
       </section>
@@ -227,6 +227,7 @@
         </ul>
       </section>
     </div>
+    <TheUpTopButton />
   </footer>
 </template>
 
@@ -238,10 +239,11 @@ import Supplier from "@/data/Supplier";
 import store from "@/data/store";
 import origin from "@/data/constant/origin";
 import BaseSkillCard from "@/components/BaseSkillCard.vue";
+import TheUpTopButton from "@/components/TheUpTopButton.vue";
 
 export default defineComponent({
   name: "MainView",
-  components: { TheLightBulb, TheDarkness, BaseSkillCard },
+  components: { TheLightBulb, TheDarkness, BaseSkillCard, TheUpTopButton },
   setup() {
     const lightStatus = reactive({ value: false });
     const handleDarkness = (noLight: boolean) => {
