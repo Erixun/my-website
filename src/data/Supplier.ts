@@ -4,7 +4,7 @@ import ContentStorage from "./ContentStorage";
 export default class Supplier {
   constructor(private recipient: ContentStorage<any>, private origin: string) {}
 
-  supply() {
+  supply(): void {
     axios.get(this.origin).then((resp) => {
       this.recipient.receive(resp.data);
     });
