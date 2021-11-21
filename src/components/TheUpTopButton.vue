@@ -32,14 +32,14 @@ export default defineComponent({
       };
 
       const scrollFunction = () => {
-        btn.style.opacity = hasScrolled(1000)? "0.9" : "0";
+        btn.style.opacity = hasScrolled(1000) ? "0.9" : "0";
       };
 
-      const hasScrolled = (limit: number) => document.body.scrollTop > limit ||
-          document.documentElement.scrollTop > limit;
-      
-      window.onscroll = scrollFunction;
+      const hasScrolled = (limit: number) =>
+        document.body.scrollTop > limit ||
+        document.documentElement.scrollTop > limit;
 
+      window.onscroll = scrollFunction;
     });
 
     const scrollUp = () => {
@@ -49,7 +49,6 @@ export default defineComponent({
   },
 });
 </script>
-
 
 <style lang="scss" scoped>
 .up-top-btn {
