@@ -130,6 +130,7 @@
       <h3>My Hometown</h3>
     </section>
     <section class="main-section currently">
+      <div class="pattern"></div>
       <div class="md-container flx">
         <h2>Currently...</h2>
         <article class="currently-learning ctext">
@@ -705,15 +706,31 @@ header.primary {
       font-size: 2.5rem;
     }
   }
-
+  .currently {
+    overflow: hidden;
+    position: relative;
+  }
+  .pattern {
+    height: 700px;
+    width: Max(120%, 800px);
+    border: 1px solid var(--default-border-color);
+    position: absolute;
+    left: -10%;
+    top: 0;
+    transform: rotate(30deg);
+    background-color: var(--accented-bgc);
+  }
   .currently > .md-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     row-gap: 2.5em;
     text-align: center;
+    z-index: 3921;
+    position: relative;
     h2 {
       width: 100%;
+      text-align: left;
     }
 
     article {
@@ -738,6 +755,7 @@ header.primary {
 
   .quote {
     text-align: left;
+    box-shadow: 0px -3px 9px -4px #80808075;
 
     .md-container {
       align-items: center;
