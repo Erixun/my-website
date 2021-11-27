@@ -45,7 +45,7 @@
             education...
           </p>
           <p>
-            If you'd like to get in contact, use one of the options below. I'd
+            If you'd like to get in contact or know more about me, use one of the options below. I'd
             be happy to hear from you. Feel free to look around too.
           </p>
         </article>
