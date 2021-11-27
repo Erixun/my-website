@@ -147,9 +147,10 @@
             <li>React</li>
           </ul>
         </article>
+        <div class="and">&</div>
         <article class="currently-workingon ctext">
           <h3>
-            & Working on
+            Working on
             <span class="rotates" emoji title="hammer_and_wrench">🛠️</span>
           </h3>
           <ul>
@@ -495,7 +496,7 @@ header.primary {
     z-index: 1000;
   }
   & > section {
-    padding: Min(6rem, 18vw) 1rem Min(8rem, 24vw);
+    padding: Min(10rem, 18vw) 1rem Min(15rem, 24vw);
   }
 
   & > section:not(.stand-out):not(.window) {
@@ -708,7 +709,7 @@ header.primary {
   .currently > .md-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     row-gap: 2.5em;
     text-align: center;
     h2 {
@@ -716,8 +717,14 @@ header.primary {
     }
 
     article {
-      flex-basis: 200px;
+      flex-basis: 250px;
       line-height: 1.4;
+    }
+
+    .and {
+      align-self: center;
+      font-size: 2rem;
+      flex-basis: 150px;
     }
 
     [emoji].studious {
