@@ -731,6 +731,7 @@ header.primary {
     h2 {
       width: 100%;
       text-align: left;
+      padding-left: 3rem;
     }
 
     article {
