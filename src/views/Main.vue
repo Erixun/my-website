@@ -1,9 +1,9 @@
 <template>
   <!-- MOBILE FIRST -->
   <the-darkness :class="goDark && 'total-darkness'"></the-darkness>
-  <header class="primary">
+  <header id="top" class="primary">
     <div class="lg-container flx">
-      <section class="logo ltext flx">
+      <section id="logo" class="logo ltext flx">
         <h1>erixun.me</h1>
         <TheLightBulb @powerOff="handleDarkness" />
       </section>
@@ -45,8 +45,9 @@
             education...
           </p>
           <p>
-            If you'd like to get in contact, use one of the options below. I'd
-            be happy to hear from you. Feel free to look around too.
+            If you'd like to get in contact or know more about me, use one of
+            the options below. I'd be happy to hear from you. Feel free to look
+            around too.
           </p>
         </article>
       </div>
@@ -57,14 +58,12 @@
               href="https://discord.gg/PF3MK6vM"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Discord server"
             >
               <img
                 src="https://www.svgrepo.com/show/341762/discord.svg"
                 intrinsicsize="512 x 512"
                 srcset="https://www.svgrepo.com/show/341762/discord.svg 4x"
-                alt="Discord SVG Vector"
-                title="Discord server"
+                alt="Discord server"
               />
             </a>
           </li>
@@ -73,8 +72,11 @@
               href="https://www.linkedin.com/in/erik-sundberg-76463787/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Linkedin profile"
-              ><i class="devicon-linkedin-plain" title="Linkedin profile"></i>
+              ><i
+                class="devicon-linkedin-plain"
+                role="button"
+                aria-label="Linkedin profile"
+              ></i>
             </a>
           </li>
           <li>
@@ -82,9 +84,12 @@
               href="https://www.facebook.com/erik.sundberg.9699"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Facebook profile"
             >
-              <i class="devicon-facebook-plain" title="Facebook profile"></i>
+              <i
+                class="devicon-facebook-plain"
+                role="button"
+                aria-label="Facebook profile"
+              ></i>
             </a>
           </li>
           <li class="circle">
@@ -92,11 +97,11 @@
               href="https://github.com/Erixun"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Github profile"
             >
               <i
                 class="icon devicon-github-original"
-                title="Github profile"
+                role="button"
+                aria-label="Github profile"
               ></i>
             </a>
           </li>
@@ -110,7 +115,7 @@
           <h2>Technical Experience</h2>
           <h3>(Relative Proficiencies)</h3>
         </header>
-        <ul v-if="skills.length > 0" class="skill-cards">
+        <ul v-if="skills.length > 0" class="skill-cards" role="presentation">
           <BaseSkillCard
             v-for="(skill, index) in skills"
             :key="skill.id"
@@ -124,35 +129,35 @@
       </div>
     </section>
     <section class="hometown window">
-      <figure>
+      <figure aria-label="Stockholm logo">
         <img src="../assets/Stockholm-logo-2013.png" alt="Stockholm logo" />
       </figure>
       <h3>My Hometown</h3>
     </section>
     <section class="main-section currently">
+      <div class="pattern"></div>
       <div class="md-container flx">
         <h2>Currently...</h2>
         <article class="currently-learning ctext">
           <h3>
             <div class="shadow-wrapper">
-              <span class="flipped studious" emoji title="monocle_face"
-                >🧐</span
-              >
+              <span class="flipped studious" emoji> 🧐 </span>
             </div>
-            Learning
+            I Am Learning
           </h3>
-          <ul class="padl">
+          <ul class="padl" role="presentation">
             <li>Azure Functions</li>
             <li>Clean Code</li>
             <li>React</li>
           </ul>
         </article>
+        <div class="and">&</div>
         <article class="currently-workingon ctext">
           <h3>
             Working on
-            <span class="rotates" emoji title="hammer_and_wrench">🛠️</span>
+            <span class="rotates" emoji>🛠️</span>
           </h3>
-          <ul>
+          <ul role="presentation">
             <li>A KanBan app</li>
             <li>My own website</li>
             <li>An Investment app</li>
@@ -172,15 +177,15 @@
               cite="https://www.cs.dartmouth.edu/~cs50/Reading/97_Things_Every_Programmer_Should_Know.pdf"
             >
               <p>
-                THE BOY SCOUTS HAVE A RULE:
-                <q>Always leave the campground cleaner than you found it. </q>
+                <q>Always leave the campground cleaner than you found it.</q>
                 <br />If you find a mess on the ground, you clean it up
                 regardless of who might have made it. You intentionally improve
                 the environment for the next group of campers. (Actually, the
                 original form of that rule, written by Robert Stephenson Smyth
                 Baden-Powell, the father of scouting, was
-                <q>
-                  Try and leave this world a little better than you found it. </q
+                <q
+                  >Try and leave this world a little better than you found
+                  it.</q
                 >)
               </p>
             </blockquote>
@@ -196,37 +201,38 @@
   <footer>
     <div class="lg-container grid">
       <section class="contact ltext">
-        <h4>Contact</h4>
-        <ul>
+        <h3>Contact</h3>
+        <ul role="presentation">
           <li>Email</li>
           <li>Phone</li>
           <li>Linkedin</li>
         </ul>
       </section>
       <section class="site-info ltext">
-        <h4>Site info</h4>
-        <ul>
+        <h3>Site info</h3>
+        <ul role="presentation">
           <li>Made with Vue.js</li>
           <li>Hosted on github pages</li>
           <li>Source code</li>
         </ul>
       </section>
       <section class="credits ltext">
-        <h4>Credits</h4>
-        <ul>
+        <h3>Credits</h3>
+        <ul role="presentation">
           <li>Made by Erik Sundberg</li>
           <li>Template by Erik Sundberg</li>
           <li>Inspired by Smashing magazine</li>
         </ul>
       </section>
       <section class="site-status ltext">
-        <h4>Status</h4>
-        <ul>
-          <li>Version: 1.2.7</li>
-          <li>Last updated: Oct 29, 2021</li>
+        <h3>Status</h3>
+        <ul role="presentation">
+          <li>Version: 1.2.1</li>
+          <li>Last updated: Nov 28, 2021</li>
         </ul>
       </section>
     </div>
+    <TheUpTopButton />
   </footer>
 </template>
 
@@ -238,10 +244,11 @@ import Supplier from "@/data/Supplier";
 import store from "@/data/store";
 import origin from "@/data/constant/origin";
 import BaseSkillCard from "@/components/BaseSkillCard.vue";
+import TheUpTopButton from "@/components/TheUpTopButton.vue";
 
 export default defineComponent({
   name: "MainView",
-  components: { TheLightBulb, TheDarkness, BaseSkillCard },
+  components: { TheLightBulb, TheDarkness, BaseSkillCard, TheUpTopButton },
   setup() {
     const lightStatus = reactive({ value: false });
     const handleDarkness = (noLight: boolean) => {
@@ -493,7 +500,7 @@ header.primary {
     z-index: 1000;
   }
   & > section {
-    padding: Min(6rem, 18vw) 1rem Min(8rem, 24vw);
+    padding: Min(10rem, 18vw) 1rem Min(15rem, 24vw);
   }
 
   & > section:not(.stand-out):not(.window) {
@@ -702,30 +709,57 @@ header.primary {
       font-size: 2.5rem;
     }
   }
-
+  .currently {
+    overflow: hidden;
+    position: relative;
+  }
+  .pattern {
+    height: 700px;
+    width: Max(120%, 800px);
+    border: 1px solid var(--default-border-color);
+    position: absolute;
+    left: -10%;
+    top: 0;
+    transform: rotate(30deg);
+    background-color: var(--accented-bgc);
+  }
   .currently > .md-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     row-gap: 2.5em;
     text-align: center;
+    z-index: 3921;
+    position: relative;
     h2 {
       width: 100%;
+      text-align: left;
+      padding-left: 3rem;
     }
 
     article {
-      flex-basis: 200px;
+      flex-basis: 250px;
       line-height: 1.4;
+    }
+
+    .and {
+      align-self: center;
+      font-size: 2rem;
+      flex-basis: 150px;
     }
 
     [emoji].studious {
       z-index: 1;
       position: relative;
     }
+    li {
+      margin-bottom: 0.4rem;
+    }
   }
 
   .quote {
     text-align: left;
+    box-shadow: 0px -3px 9px -4px #80808075;
 
     .md-container {
       align-items: center;
@@ -770,7 +804,7 @@ header.primary {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 5vw;
-    h4 {
+    h3 {
       font-weight: bold;
     }
     ul {
