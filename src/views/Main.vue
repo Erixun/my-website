@@ -57,14 +57,12 @@
               href="https://discord.gg/PF3MK6vM"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Discord server"
             >
               <img
                 src="https://www.svgrepo.com/show/341762/discord.svg"
                 intrinsicsize="512 x 512"
                 srcset="https://www.svgrepo.com/show/341762/discord.svg 4x"
-                alt="Discord SVG Vector"
-                title="Discord server"
+                alt="Discord server"
               />
             </a>
           </li>
@@ -73,8 +71,7 @@
               href="https://www.linkedin.com/in/erik-sundberg-76463787/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Linkedin profile"
-              ><i class="devicon-linkedin-plain" title="Linkedin profile"></i>
+              ><i class="devicon-linkedin-plain" role="button" aria-label="Linkedin profile"></i>
             </a>
           </li>
           <li>
@@ -82,9 +79,8 @@
               href="https://www.facebook.com/erik.sundberg.9699"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Facebook profile"
             >
-              <i class="devicon-facebook-plain" title="Facebook profile"></i>
+              <i class="devicon-facebook-plain" role="button" aria-label="Facebook profile"></i>
             </a>
           </li>
           <li class="circle">
@@ -92,11 +88,10 @@
               href="https://github.com/Erixun"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Github profile"
             >
               <i
-                class="icon devicon-github-original"
-                title="Github profile"
+                class="icon devicon-github-original" role="button"
+              aria-label="Github profile"
               ></i>
             </a>
           </li>
@@ -110,7 +105,7 @@
           <h2>Technical Experience</h2>
           <h3>(Relative Proficiencies)</h3>
         </header>
-        <ul v-if="skills.length > 0" class="skill-cards">
+        <ul v-if="skills.length > 0" class="skill-cards" role="presentation">
           <BaseSkillCard
             v-for="(skill, index) in skills"
             :key="skill.id"
@@ -124,7 +119,7 @@
       </div>
     </section>
     <section class="hometown window">
-      <figure>
+      <figure aria-label="Stockholm logo">
         <img src="../assets/Stockholm-logo-2013.png" alt="Stockholm logo" />
       </figure>
       <h3>My Hometown</h3>
@@ -136,13 +131,13 @@
         <article class="currently-learning ctext">
           <h3>
             <div class="shadow-wrapper">
-              <span class="flipped studious" emoji title="monocle_face">
+              <span class="flipped studious" emoji>
                 🧐
               </span>
             </div>
             I Am Learning
           </h3>
-          <ul class="padl">
+          <ul class="padl" role="presentation">
             <li>Azure Functions</li>
             <li>Clean Code</li>
             <li>React</li>
@@ -152,9 +147,9 @@
         <article class="currently-workingon ctext">
           <h3>
             Working on
-            <span class="rotates" emoji title="hammer_and_wrench">🛠️</span>
+            <span class="rotates" emoji>🛠️</span>
           </h3>
-          <ul>
+          <ul role="presentation">
             <li>A KanBan app</li>
             <li>My own website</li>
             <li>An Investment app</li>
@@ -198,32 +193,32 @@
   <footer>
     <div class="lg-container grid">
       <section class="contact ltext">
-        <h4>Contact</h4>
-        <ul>
+        <h3>Contact</h3>
+        <ul role="presentation">
           <li>Email</li>
           <li>Phone</li>
           <li>Linkedin</li>
         </ul>
       </section>
       <section class="site-info ltext">
-        <h4>Site info</h4>
-        <ul>
+        <h3>Site info</h3>
+        <ul role="presentation">
           <li>Made with Vue.js</li>
           <li>Hosted on github pages</li>
           <li>Source code</li>
         </ul>
       </section>
       <section class="credits ltext">
-        <h4>Credits</h4>
-        <ul>
+        <h3>Credits</h3>
+        <ul role="presentation">
           <li>Made by Erik Sundberg</li>
           <li>Template by Erik Sundberg</li>
           <li>Inspired by Smashing magazine</li>
         </ul>
       </section>
       <section class="site-status ltext">
-        <h4>Status</h4>
-        <ul>
+        <h3>Status</h3>
+        <ul role="presentation">
           <li>Version: 1.2.7</li>
           <li>Last updated: Oct 29, 2021</li>
         </ul>
@@ -801,7 +796,7 @@ header.primary {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 5vw;
-    h4 {
+    h3 {
       font-weight: bold;
     }
     ul {

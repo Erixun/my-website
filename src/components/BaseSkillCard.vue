@@ -10,7 +10,7 @@
       </button>
       <div class="content back" v-if="isFlipped">
         <h3>
-          <i :class="`devicon-${id}-${logotype} colored`"></i>
+          <i :class="`devicon-${id}-${logotype} colored`" role="img" :aria-label="`${label} logo`"></i>
           <span class="label">{{ label }}</span>
         </h3>
         <p>
@@ -18,7 +18,7 @@
         </p>
       </div>
       <div class="content front" v-else>
-        <i :class="`devicon devicon-${id}-${logotype} colored`"></i>
+        <i :class="`devicon devicon-${id}-${logotype} colored`" role="img" :aria-label="`${label} logo`"></i>
         <h3>{{ label }}</h3>
         <meter
           min="0"
@@ -164,7 +164,14 @@ meter::-moz-meter-bar {
 .flip-btn:hover {
   background: lightgrey;
 }
+.flip-btn:focus {
+  outline: 1px solid var(--brand-color  );  
+}
+.flip-btn:active {
+    outline: 2  px solid var(--brand-color  );  
+}
 .flip-indicator {
   width: 0.8em;
+  pointer-events: none;
 }
 </style>
