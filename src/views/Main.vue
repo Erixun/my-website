@@ -45,8 +45,9 @@
             education...
           </p>
           <p>
-            If you'd like to get in contact or know more about me, use one of the options below. I'd
-            be happy to hear from you. Feel free to look around too.
+            If you'd like to get in contact or know more about me, use one of
+            the options below. I'd be happy to hear from you. Feel free to look
+            around too.
           </p>
         </article>
       </div>
@@ -71,7 +72,11 @@
               href="https://www.linkedin.com/in/erik-sundberg-76463787/"
               target="_blank"
               rel="noopener noreferrer"
-              ><i class="devicon-linkedin-plain" role="button" aria-label="Linkedin profile"></i>
+              ><i
+                class="devicon-linkedin-plain"
+                role="button"
+                aria-label="Linkedin profile"
+              ></i>
             </a>
           </li>
           <li>
@@ -80,7 +85,11 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i class="devicon-facebook-plain" role="button" aria-label="Facebook profile"></i>
+              <i
+                class="devicon-facebook-plain"
+                role="button"
+                aria-label="Facebook profile"
+              ></i>
             </a>
           </li>
           <li class="circle">
@@ -90,8 +99,9 @@
               rel="noopener noreferrer"
             >
               <i
-                class="icon devicon-github-original" role="button"
-              aria-label="Github profile"
+                class="icon devicon-github-original"
+                role="button"
+                aria-label="Github profile"
               ></i>
             </a>
           </li>
@@ -131,9 +141,7 @@
         <article class="currently-learning ctext">
           <h3>
             <div class="shadow-wrapper">
-              <span class="flipped studious" emoji>
-                🧐
-              </span>
+              <span class="flipped studious" emoji> 🧐 </span>
             </div>
             I Am Learning
           </h3>
