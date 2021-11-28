@@ -227,8 +227,8 @@
       <section class="site-status ltext">
         <h3>Status</h3>
         <ul role="presentation">
-          <li>Version: 1.2.7</li>
-          <li>Last updated: Oct 29, 2021</li>
+          <li>Version: 1.2.1</li>
+          <li>Last updated: Nov 28, 2021</li>
         </ul>
       </section>
     </div>
