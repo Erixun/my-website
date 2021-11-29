@@ -467,7 +467,7 @@ body {
   ul,
   ol {
     list-style: none;
-    margin: 1.5em 0;
+    margin: 1.5em 0 0.8em;
     padding: 0;
   }
 
