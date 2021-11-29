@@ -171,7 +171,6 @@
           <img src="../assets/boyscout.png" alt="A boy scout blowing a horn" />
         </aside>
         <article class="quote-article">
-          <h2>The Boy Scouts Rule</h2>
           <figure>
             <blockquote
               cite="https://www.cs.dartmouth.edu/~cs50/Reading/97_Things_Every_Programmer_Should_Know.pdf"
@@ -190,7 +189,7 @@
               </p>
             </blockquote>
             <figcaption>
-              – Robert C. Martin, author of <cite>Clean Code</cite>, in
+              – Robert C. Martin on <strong>the Boy Scout Rule</strong> in
               <cite>97 Things Every Programmer Should Know</cite>
             </figcaption>
           </figure>
@@ -462,6 +461,7 @@ body {
     line-height: 1.4;
     padding: 0.5em 0;
     font-family: "Merriweather Sans", sans-serif;
+    letter-spacing: 0.02rem;
   }
 
   ul,
@@ -842,7 +842,9 @@ header.primary {
 
   .quote {
     text-align: left;
-    box-shadow: 0px -3px 9px -4px #80808075;
+    padding: Min(6rem, 18vw) 1rem Min(8rem, 24vw);
+z-index: 7574;
+box-shadow: 1px 2px 4px 0px #80808075;
 
     .md-container {
       align-items: center;
