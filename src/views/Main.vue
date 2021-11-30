@@ -412,6 +412,7 @@ export default defineComponent({
   --lg-width: 1500px;
   --md-width: 1200px;
   --sm-width: 900px;
+  --podcast-hover-bgc: #8080801c;
 }
 
 /* GENERAL STYLING */
@@ -944,7 +945,7 @@ header.primary {
       border-radius: 0.8rem;
       padding-bottom: 1rem;
       &:hover {
-        background: #8080801c;
+        background: var(--podcast-hover-bgc);
       }
       &:active {
         color: var(--accented-text-color);
