@@ -198,17 +198,22 @@
     </section>
     <section class="main-section favorites flx-col">
       <div class="md-container">
-
-      <h2>A Few Favorites</h2>
+        <h2>A Few Favorites</h2>
       </div>
       <div class="md-container">
         <h3>Dev Podcasts</h3>
         <ul class="ltext">
           <li>
             <article class="podcast">
-              <a href="https://podcasts.google.com/feed/aHR0cHM6Ly93d3cuY29kaW5nYmxvY2tzLm5ldC9wb2RjYXN0LWZlZWQueG1s" class="podcast-link">
+              <a
+                href="https://podcasts.google.com/feed/aHR0cHM6Ly93d3cuY29kaW5nYmxvY2tzLm5ldC9wb2RjYXN0LWZlZWQueG1s"
+                class="podcast-link"
+              >
                 <figure>
-                  <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRHZlxmt4pe3kZtc6PzMk2sXPtXngEI9zZ5WqEuyE4j4YgugZY" alt="Coding Blocks podcast logo" />
+                  <img
+                    src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRHZlxmt4pe3kZtc6PzMk2sXPtXngEI9zZ5WqEuyE4j4YgugZY"
+                    alt="Coding Blocks podcast logo"
+                  />
                   <figcaption>
                     <h4>Coding Blocks</h4>
                     <small>A. Underwood, M. Outlaw, J. Zack</small>
@@ -219,9 +224,15 @@
           </li>
           <li>
             <article class="podcast">
-              <a href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkLnN5bnRheC5mbS9yc3M" class="podcast-link">
+              <a
+                href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkLnN5bnRheC5mbS9yc3M"
+                class="podcast-link"
+              >
                 <figure>
-                  <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT_DOr_E0YhD_4q5arVX4MVp4bC87IfEh50gmS037HK-WyaGISv" alt="Syntax podcast logo" />
+                  <img
+                    src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT_DOr_E0YhD_4q5arVX4MVp4bC87IfEh50gmS037HK-WyaGISv"
+                    alt="Syntax podcast logo"
+                  />
                   <figcaption>
                     <h4>Syntax</h4>
                     <small>Wes Bos & Scott Tolinski</small>
@@ -232,9 +243,15 @@
           </li>
           <li>
             <article class="podcast">
-              <a href="https://podcasts.google.com/feed/aHR0cHM6Ly9zaG9wdGFsa3Nob3cuY29tL2ZlZWQvcG9kY2FzdA" class="podcast-link">
+              <a
+                href="https://podcasts.google.com/feed/aHR0cHM6Ly9zaG9wdGFsa3Nob3cuY29tL2ZlZWQvcG9kY2FzdA"
+                class="podcast-link"
+              >
                 <figure>
-                  <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTRiTaHLEGNpQd1YJGWKcZpH3JYjkrOROO303Tz6krK0nPkO93C" alt="ShopTalk podcast logo"/>
+                  <img
+                    src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTRiTaHLEGNpQd1YJGWKcZpH3JYjkrOROO303Tz6krK0nPkO93C"
+                    alt="ShopTalk podcast logo"
+                  />
                   <figcaption>
                     <h4>ShopTalk</h4>
                     <small>ShopTalk</small>
@@ -265,9 +282,15 @@
           </li>
           <li>
             <article class="podcast">
-              <a href="https://podcasts.google.com/feed/aHR0cHM6Ly90aGVkb3RuZXRjb3JlcG9kY2FzdC5saWJzeW4uY29tL3Jzcw" class="podcast-link">
+              <a
+                href="https://podcasts.google.com/feed/aHR0cHM6Ly90aGVkb3RuZXRjb3JlcG9kY2FzdC5saWJzeW4uY29tL3Jzcw"
+                class="podcast-link"
+              >
                 <figure>
-                  <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTsmngZPTEBidXSe2PZr_zQ-LI9XFJa50claNHxy9DZM8sjQO0q" alt="The .NET Core Podcast logo" />
+                  <img
+                    src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTsmngZPTEBidXSe2PZr_zQ-LI9XFJa50claNHxy9DZM8sjQO0q"
+                    alt="The .NET Core Podcast logo"
+                  />
                   <figcaption>
                     <h4>The .NET Core Podcast</h4>
                     <small>Jamie Taylor</small>
@@ -843,8 +866,8 @@ header.primary {
   .quote {
     text-align: left;
     padding: Min(6rem, 18vw) 1rem Min(8rem, 24vw);
-z-index: 7574;
-box-shadow: 1px 2px 4px 0px #80808075;
+    z-index: 7574;
+    box-shadow: 1px 2px 4px 0px #80808075;
 
     .md-container {
       align-items: center;
