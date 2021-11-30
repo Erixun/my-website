@@ -44,6 +44,7 @@ export default defineComponent({
   --contact-opt-bgc: var(--base-bgc);
   --separate-color: var(--base-bgc);
   --default-border-color: #4d526691;
+  --podcast-hover-bgc: #80808054;
 }
 
 #overlay {
