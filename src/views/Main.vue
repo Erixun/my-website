@@ -952,6 +952,7 @@ header.primary {
 
   .favorites {
     gap: 3vmax;
+    overflow: hidden;
     ul {
       display: flex;
       flex-wrap: wrap;
