@@ -309,9 +309,38 @@
       <section class="contact ltext">
         <h3>Contact</h3>
         <ul role="presentation">
-          <li>Email</li>
-          <li>Phone</li>
-          <li>Linkedin</li>
+          <li>
+            <a
+              href="https://discord.gg/PF3MK6vM"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Discord-server
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/erik-sundberg-76463787/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Linkedin-profile
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.facebook.com/erik.sundberg.9699"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Facebook-profile
+            </a>
+          </li>
+          <li>
+            <a href="mailto:erik.sundberg@unicus.com">
+              erik.sundberg@unicus.com
+            </a>
+          </li>
         </ul>
       </section>
       <section class="site-info ltext">
@@ -319,22 +348,28 @@
         <ul role="presentation">
           <li>Made with Vue.js</li>
           <li>Hosted on github pages</li>
-          <li>Source code</li>
+          <li>
+            Source code <a href="https://github.com/Erixun/my-website">here</a>
+          </li>
         </ul>
       </section>
       <section class="credits ltext">
         <h3>Credits</h3>
         <ul role="presentation">
           <li>Made by Erik Sundberg</li>
-          <li>Template by Erik Sundberg</li>
-          <li>Inspired by Smashing magazine</li>
+          <li>
+            Dev icons sourced from <a href="https://devicon.dev/">here</a>
+          </li>
+          <li>
+            Podcast images found <a href="https://podcasts.google.com/">here</a>
+          </li>
         </ul>
       </section>
       <section class="site-status ltext">
         <h3>Status</h3>
         <ul role="presentation">
-          <li>Version: 1.2.1</li>
-          <li>Last updated: Nov 28, 2021</li>
+          <li>Version: 1.2.2</li>
+          <li>Last updated: Jan 19, 2022</li>
         </ul>
       </section>
     </div>
@@ -980,6 +1015,17 @@ header.primary {
     ul {
       margin-top: 0.5em;
       line-height: 1.4;
+
+      a {
+        text-decoration: none;
+        font-style: italic;
+      }
+      a:focus, a:hover {
+        font-weight: bold;
+      }
+      a:visited {
+        color: var(--brand-color);
+      }
     }
   }
 }
