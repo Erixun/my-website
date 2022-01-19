@@ -135,7 +135,7 @@
       <h3>My Hometown</h3>
     </section>
     <section class="main-section currently">
-      <div class="pattern"></div>
+      <div class="pattern pattern-x"></div>
       <div class="md-container flx">
         <h2>Currently...</h2>
         <article class="currently-learning ctext">
@@ -197,6 +197,7 @@
       </div>
     </section>
     <section class="main-section favorites flx-col">
+      <div class="pattern pattern-y"></div>
       <div class="md-container">
         <h2>A Few Favorites</h2>
       </div>
@@ -821,14 +822,24 @@ header.primary {
     position: relative;
   }
   .pattern {
-    height: 700px;
     width: Max(120%, 800px);
     border: 1px solid var(--default-border-color);
+    background-color: var(--accented-bgc);
+  }
+  .pattern-x {
+    height: 700px;
     position: absolute;
     left: -10%;
     top: 0;
     transform: rotate(30deg);
-    background-color: var(--accented-bgc);
+  }
+  .pattern-y {
+    height: 300px;
+    position: relative;
+    left: -10%;
+    top: -48%;
+    transform: rotate(-5deg);
+    margin-top: -360px;
   }
   .currently > .md-container {
     display: flex;
