@@ -390,7 +390,7 @@
       <section class="site-status ltext">
         <h3>Status</h3>
         <ul role="presentation">
-          <li>Version: 1.2.2</li>
+          <li>Version: 1.3.2</li>
           <li>Last updated: Jan 19, 2022</li>
         </ul>
       </section>
