@@ -8,14 +8,32 @@
         <TheLightBulb @powerOff="handleDarkness" />
       </section>
       <section class="mid">
-        <!-- <nav>nav</nav> -->
+        <nav>
+          <ul>
+            <li>
+              <a href="#powers" @click.prevent="scrollIntoView('powers')"
+                >Tech XP</a
+              >
+            </li>
+            <li>
+              <a href="#currently" @click.prevent="scrollIntoView('currently')"
+                >Currently</a
+              >
+            </li>
+            <li>
+              <a href="#favorites" @click.prevent="scrollIntoView('favorites')"
+                >Favorites</a
+              >
+            </li>
+          </ul>
+        </nav>
       </section>
-      <section class=""></section>
+      <!-- <section class=""></section> -->
     </div>
   </header>
   <main>
     <section class="main-section presentation">
-      <div class="lg-container">
+      <div id="intro" class="lg-container">
         <aside tabindex="0" class="portrait flx-col flx-just-center">
           <div class="shadow-wrapper">
             <figure aria-label="Erik Sundberg">
@@ -113,7 +131,7 @@
         </ul>
       </div>
     </section>
-    <section class="main-section powers stand-out">
+    <section id="powers" class="main-section powers stand-out">
       <div class="lg-container">
         <header>
           <h2>Technical Experience</h2>
@@ -138,9 +156,9 @@
       </figure>
       <h3>My Hometown</h3>
     </section>
-    <section class="main-section currently">
+    <section id="currently" class="main-section currently">
       <div class="pattern pattern-x"></div>
-      <div class="md-container flx">
+      <div ref="currently" class="md-container flx">
         <h2>Currently...</h2>
         <article class="currently-learning ctext">
           <h3>
@@ -200,7 +218,7 @@
         </article>
       </div>
     </section>
-    <section class="main-section favorites flx-col">
+    <section id="favorites" class="main-section favorites flx-col">
       <div class="pattern pattern-y"></div>
       <div class="md-container">
         <h2>A Few Favorites</h2>
@@ -382,7 +400,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, reactive } from "vue";
+import { computed, defineComponent, onMounted, reactive, ref } from "vue";
 import TheLightBulb from "@/components/TheLightBulb.vue";
 import TheDarkness from "@/components/TheDarkness.vue";
 import Supplier from "@/data/Supplier";
@@ -403,15 +421,33 @@ export default defineComponent({
     const supplier = new Supplier(store.skills, origin.skills);
     onMounted(() => {
       supplier.supply();
+      rightFadeObserver.observe(currently.value!);
     });
 
     const showState = reactive({ isMore: false });
     const toggleShowState = () => {
       showState.isMore = !showState.isMore;
     };
+
     const SKILLS_MINIMUM = 6;
 
+    const rightFadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("fade-in-right");
+          return;
+        }
+
+        entry.target.classList.remove("fade-in-right");
+      });
+    });
+    const scrollIntoView = (id: string) => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    };
+    const currently = ref<null | HTMLElement>(null);
     return {
+      currently,
+      scrollIntoView,
       handleDarkness,
       goDark: computed(() => lightStatus.value),
       SKILLS_MINIMUM,
@@ -470,6 +506,7 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
   font-size: calc(0.35842vw + 0.95296em);
+  scroll-behavior: smooth;
 
   .app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -629,6 +666,31 @@ header.primary {
   section {
     flex-grow: 1;
   }
+  .mid {
+    align-items: center;
+    display: flex;
+    nav {
+      width: 100%;
+      ul {
+        display: flex;
+        margin: 0;
+        gap: 1rem;
+        justify-content: center;
+
+        a {
+          color: #008a00;
+          text-decoration: none;
+          font-style: italic;
+          font-weight: bold;
+          font-size: clamp(15px, 1.1vw, 18px);
+          &:focus,
+          &:hover {
+            text-decoration: overline underline;
+          }
+        }
+      }
+    }
+  }
   .logo {
     font-size: 1.1em;
     font-weight: bold;
@@ -667,6 +729,20 @@ header.primary {
     align-content: space-evenly;
     column-gap: 3%;
     flex-flow: row-reverse wrap;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: fade-down 1s;
+    }
+    @keyframes fade-down {
+      from {
+        transform: translateY(-15%);
+        filter: opacity(0);
+      }
+      to {
+        transform: translateY(0%);
+        filter: opacity(1);
+      }
+    }
 
     article {
       flex-basis: 500px;
@@ -880,6 +956,20 @@ header.primary {
     transform: rotate(-5deg);
     margin-top: -360px;
   }
+  .fade-in-right {
+    animation: 1s fade-in-right ease 0s forwards;
+
+    @keyframes fade-in-right {
+      from {
+        transform: translateX(-10%);
+        filter: opacity(0);
+      }
+      to {
+        transform: translateX(0%);
+        filter: opacity(1);
+      }
+    }
+  }
   .currently > .md-container {
     display: flex;
     flex-wrap: wrap;
@@ -888,6 +978,8 @@ header.primary {
     text-align: center;
     z-index: 3921;
     position: relative;
+    filter: opacity(0);
+
     h2 {
       width: 100%;
       text-align: left;
