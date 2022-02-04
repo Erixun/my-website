@@ -45,6 +45,10 @@
             education...
           </p>
           <p>
+            I know the basics of React and Angular but mostly use a union of the
+            two known as Vue.
+          </p>
+          <p>
             If you'd like to get in contact or know more about me, use one of
             the options below. I'd be happy to hear from you. Feel free to look
             around too.
@@ -952,6 +956,7 @@ header.primary {
 
   .favorites {
     gap: 3vmax;
+    overflow: hidden;
     ul {
       display: flex;
       flex-wrap: wrap;
@@ -1020,7 +1025,8 @@ header.primary {
         text-decoration: none;
         font-style: italic;
       }
-      a:focus, a:hover {
+      a:focus,
+      a:hover {
         font-weight: bold;
       }
       a:visited {
